@@ -1,6 +1,6 @@
 {
-  "name": "minimal-react-boilerplate",
-  "short_name": "minimal-react-boilerplate",
+  "name": "luncha",
+  "short_name": "luncha",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",

@@ -1,11 +1,11 @@
 {
-  "name": "minimal-react-boilerplate",
+  "name": "luncha",
   "version": "1.0.0",
   "description": "",
   "author": "Alexander Nanberg <alex.nanberg@hotmail.com> (alexandernanberg.com)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexandernanberg/minimal-react-boilerplate"
+    "url": "https://github.com/alexandernanberg/luncha"
   },
   "browserslist": [
     "IE 11",
