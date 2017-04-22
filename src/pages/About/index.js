@@ -1,8 +1,9 @@
 import React from 'react'
+import Hero from '../../components/Hero'
 
 const About = () =>
-  <h1 style={{ textAlign: 'center' }}>
-    About.
-  </h1>
+  <Hero>
+    <h1>About</h1>
+  </Hero>
 
 export default About

@@ -1,0 +1,12 @@
+@import '../../styles/core.scss';
+
+.component {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  padding: 96px 32px;
+  text-align: center;
+  border-bottom: solid 1px map-get($colors, gray200);
+}

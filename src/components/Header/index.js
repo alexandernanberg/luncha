@@ -1,13 +1,14 @@
 import React from 'react'
-import Nav from '../Nav'
+import { Link } from 'react-router-dom'
 import Icon from '../Icon'
+import Nav from '../Nav'
 import style from './style.scss'
 
 const Header = () =>
   <header className={style.component}>
-    <h2>
-      <Icon name="triangle" /> minimal-react-boilerplate
-    </h2>
+    <Link to="/" className={style.logo}>
+      <Icon name="logo" /> <span>Luncha</span>
+    </Link>
     <Nav />
   </header>
 
