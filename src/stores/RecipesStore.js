@@ -25,15 +25,12 @@ class Recipe {
 
 export class RecipesStore {
   @observable recipes = [
-    new Recipe('Hälsosam tacos', 4, 'http://az616578.vo.msecnd.net/files/2016/07/18/636044104859117199985990752_tacos.jpg'),
-    new Recipe('Vesuvio pizza', 5, 'http://static.sirpizzafranklinpark.com/img/pizza.jpg'),
-    new Recipe('Lax med sesamfrön', 3, 'http://images.media-allrecipes.com/images/58748.jpg'),
-    new Recipe('Grillad oxfile med potatissallad', 3, 'https://res.cloudinary.com/coopsverige/image/upload/w_400,h_400/v1434612265/37858.jpg'),
-    new Recipe('Panerad rödspätta', 3, 'http://cdn.mysitoo.com/10412/cache/ctn1024_465_12800_3_32__panerad-torsk.jpg?v=1435339343'),
-    new Recipe('Köttbullar och mos', 3, 'https://www.arla.se/globalassets/bilder-recept/algkottbullar-857x600.jpg'),
-    new Recipe('Hälsosam tacos', 4, 'http://az616578.vo.msecnd.net/files/2016/07/18/636044104859117199985990752_tacos.jpg'),
-    new Recipe('Vesuvio pizza', 5, 'http://static.sirpizzafranklinpark.com/img/pizza.jpg'),
-    new Recipe('Lax med sesamfrön', 3, 'http://images.media-allrecipes.com/images/58748.jpg'),
+    new Recipe('Hamburgare med pommes', 4, 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'),
+    new Recipe('Baconpasta', 5, 'https://static.pexels.com/photos/169743/pexels-photo-169743.jpeg'),
+    new Recipe('Lax med sallad', 3, 'https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg'),
+    new Recipe('Grillspett', 3, 'https://images.pexels.com/photos/111131/meat-vegetables-gemuesepiess-mushrooms-111131.jpeg'),
+    new Recipe('Grillad kyckling', 3, 'https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg'),
+    new Recipe('Pizza', 3, 'https://images.pexels.com/photos/65132/pexels-photo-65132.jpeg'),
   ]
   @action getRecipeBySlug(slug) {
     return this.recipes.find(r => r.slug === slug)
