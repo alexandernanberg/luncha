@@ -7,8 +7,8 @@ import store from '../../stores/RecipesStore'
 const Index = () =>
   <div>
     <Hero>
-      <h1>Luncha hjälper dig att hitta nya recept
-      <br />och inspirera ditt matlagande 🍕</h1>
+      <h1>Luncha hjälper dig att hitta nya
+        recept och inspirera ditt matlagande 🍕</h1>
     </Hero>
     <Grid store={store} />
   </div>

@@ -8,4 +8,15 @@
   padding: 96px 32px 132px;
   text-align: center;
   border-bottom: solid 1px map-get($colors, gray200);
+
+  @include breakpoint(mobile) {
+    padding: 48px 32px 96px;
+  }
+
+  & h1 {
+    max-width: 580px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
+
