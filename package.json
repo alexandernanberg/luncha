@@ -16,7 +16,10 @@
     "start": "NODE_ENV=production node index.js",
     "clean": "find public \\( -name '*.js' -o -name '*.html' \\) -mindepth 1 -exec rm -rf {} + || exit 0",
     "build": "npm run clean && NODE_ENV=production webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "docker:build": "docker build -t registry.gitlab.com/nanberg/luncha .",
+    "docker:push": "docker push registry.gitlab.com/nanberg/luncha",
+    "deploy": "npm run docker:build && npm run docker:push"
   },
   "dependencies": {
     "autoprefixer": "^6.7.7",

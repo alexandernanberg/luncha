@@ -24,3 +24,9 @@ $breakpoints: (
 $font: (
   family: unquote("BlinkMacSystemFont, sans-serif"),
 );
+
+$easings: (
+  swiftOut: cubic-bezier(0.55, 0, 0.1, 1),
+  appleEase: cubic-bezier(0.4, 0.01, 0.165, 0.99),
+  appleEaseAlt: cubic-bezier(0.28, 0.11, 0.32, 1)
+);

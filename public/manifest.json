@@ -1,6 +1,6 @@
 {
-  "name": "luncha",
-  "short_name": "luncha",
+  "name": "Luncha",
+  "short_name": "Luncha",
   "start_url": ".",
   "display": "standalone",
   "orientation": "portrait",

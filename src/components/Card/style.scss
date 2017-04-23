@@ -5,14 +5,20 @@
   text-decoration: none;
   color: map-get($colors, gray900);
   margin-bottom: 44px;
+  background-color: map-get($colors, white);
+  transition: all 160ms map-get($easings, appleEase);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 32px rgba(map-get($colors, gray900), 0.12);
+  }
 }
 
-.image {
+.figure {
   position: relative;
   height: 0;
   overflow: hidden;
   padding-bottom: 64%;
-  margin-bottom: 16px;
 
   & img {
     position: absolute;
@@ -21,5 +27,27 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+  }
+}
+
+.body {
+  padding: 24px;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 16px 24px 24px;
+  font-size: 1.4rem;
+
+  & svg {
+    font-size: 1.4em;
+  }
+
+  & span {
+    display: inline-block;
+    vertical-align: middle;
   }
 }

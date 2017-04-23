@@ -1,0 +1,4 @@
+.git
+.vagrant
+.editorconfig
+node_modules

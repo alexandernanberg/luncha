@@ -1,14 +1,24 @@
+@import '../../styles/core.scss';
+
 .component {
+  padding: 64px 32px;
+  background-color: map-get($colors, gray100);
+}
+
+.grid {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  max-width: 960px;
+  max-width: 1170px;
   margin: 0 auto;
-  padding: 64px 32px;
 }
 
 .column {
   width: 33%;
   padding: 0 22px;
+
+  @include breakpoint(mobile) {
+    width: 100%;
+  }
 }

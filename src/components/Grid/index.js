@@ -11,7 +11,9 @@ const Recipes = (props) => {
 
   return (
     <section className={style.component}>
-      {columns}
+      <div className={style.grid}>
+        {columns}
+      </div>
     </section>
   )
 }

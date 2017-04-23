@@ -34,4 +34,12 @@ h2 {
 
 h3 {
   font-size: 2rem;
+  font-weight: 500;
+  color: map-get($colors, gray900);
+}
+
+h6 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: map-get($colors, gray600);
 }
