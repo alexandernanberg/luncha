@@ -25,12 +25,12 @@ class Recipe {
 
 export class RecipesStore {
   @observable recipes = [
-    new Recipe('Hamburgare med pommes', 4, 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg'),
-    new Recipe('Baconpasta', 5, 'https://static.pexels.com/photos/169743/pexels-photo-169743.jpeg'),
-    new Recipe('Lax med sallad', 3, 'https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg'),
-    new Recipe('Grillspett', 3, 'https://images.pexels.com/photos/111131/meat-vegetables-gemuesepiess-mushrooms-111131.jpeg'),
-    new Recipe('Grillad kyckling', 3, 'https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg'),
-    new Recipe('Pizza', 3, 'https://images.pexels.com/photos/65132/pexels-photo-65132.jpeg'),
+    new Recipe('Hamburgare med pommes', 4, 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Baconpasta', 5, 'https://static.pexels.com/photos/169743/pexels-photo-169743.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Lax med sallad', 3, 'https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Grillspett', 3, 'https://images.pexels.com/photos/111131/meat-vegetables-gemuesepiess-mushrooms-111131.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Grillad kyckling', 3, 'https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Pizza', 3, 'https://images.pexels.com/photos/65132/pexels-photo-65132.jpeg?h=350&auto=compress&cs=tinysrgb'),
   ]
   @action getRecipeBySlug(slug) {
     return this.recipes.find(r => r.slug === slug)
