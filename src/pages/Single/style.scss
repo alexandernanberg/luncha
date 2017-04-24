@@ -1,0 +1,42 @@
+@import '../../styles/core.scss';
+
+.list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.listItem {
+  padding: 0 32px;
+
+  @include breakpoint(mobile) {
+    padding: 0 12px;
+  }
+
+  & + & {
+    border-left: solid 1px map-get($colors, gray300);
+  }
+
+  & h4 {
+    color: map-get($colors, gray600);
+  }
+
+  & svg {
+    vertical-align: text-bottom;
+    font-size: 1.4em;
+    margin-right: 8px;
+    color: map-get($colors, gray900);
+  }
+
+  & span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  & b {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: map-get($colors, gray900);
+  }
+}

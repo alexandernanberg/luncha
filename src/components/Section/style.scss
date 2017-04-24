@@ -1,0 +1,10 @@
+@import '../../styles/core.scss';
+
+.component {
+  padding: 64px 32px;
+  background-color: map-get($colors, gray100);
+
+  @include breakpoint(mobile) {
+    padding: 32px 16px;
+  }
+}

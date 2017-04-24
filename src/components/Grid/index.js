@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../Card'
+import Section from '../Section'
 import style from './style.scss'
 
 const Recipes = (props) => {
@@ -10,11 +11,11 @@ const Recipes = (props) => {
   ))
 
   return (
-    <section className={style.component}>
-      <div className={style.grid}>
+    <Section>
+      <div className={style.component}>
         {columns}
       </div>
-    </section>
+    </Section>
   )
 }
 

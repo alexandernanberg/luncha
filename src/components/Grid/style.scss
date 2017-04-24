@@ -1,15 +1,6 @@
 @import '../../styles/core.scss';
 
 .component {
-  padding: 64px 32px;
-  background-color: map-get($colors, gray100);
-
-  @include breakpoint(mobile) {
-    padding: 48px 16px;
-  }
-}
-
-.grid {
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;

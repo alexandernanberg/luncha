@@ -5,12 +5,12 @@
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
-  padding: 96px 32px 132px;
+  padding: 96px 32px 112px;
   text-align: center;
   border-bottom: solid 1px map-get($colors, gray200);
 
   @include breakpoint(mobile) {
-    padding: 48px 32px 96px;
+    padding: 32px 24px 48px;
   }
 
   & h1 {
