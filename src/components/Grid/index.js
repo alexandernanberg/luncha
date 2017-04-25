@@ -1,23 +1,19 @@
 import React from 'react'
-import Card from '../Card'
-import Section from '../Section'
+import classNames from 'classnames'
 import style from './style.scss'
 
-const Recipes = (props) => {
-  const columns = props.store.recipes.map(r => (
-    <div className={style.column} key={r.id}>
-      <Card {...r} />
-    </div>
-  ))
+const Grid = props =>
+  <div
+    {...props}
+    className={classNames(style.grid, props.className)}
+  />
 
-  return (
-    <Section>
-      <div className={style.component}>
-        {columns}
-      </div>
-    </Section>
-  )
-}
+const Column = props =>
+  <div
+    {...props}
+    className={classNames(style.column, props.className)}
+    data-size={props.size}
+  />
 
-
-export default Recipes
+export default Grid
+export { Grid, Column }

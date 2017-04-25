@@ -1,7 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import Hero from '../../components/Hero'
-import Grid from '../../components/Grid'
+import Recipes from '../../components/Recipes'
 import store from '../../stores/RecipesStore'
 
 const Index = () =>
@@ -10,7 +10,7 @@ const Index = () =>
       <h1>Luncha hjälper dig att hitta nya
         recept och inspirera ditt matlagande 🍕</h1>
     </Hero>
-    <Grid store={store} />
+    <Recipes store={store} />
   </div>
 
 

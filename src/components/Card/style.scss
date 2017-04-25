@@ -1,7 +1,9 @@
 @import '../../styles/core.scss';
 
 .component {
-  display: block;
+  display: flex;
+  flex-flow: column wrap;
+  flex-grow: 1;
   text-decoration: none;
   color: map-get($colors, gray900);
   margin-bottom: 44px;
@@ -35,6 +37,7 @@
 }
 
 .body {
+  flex-grow: 1;
   padding: 24px;
   text-align: center;
 }

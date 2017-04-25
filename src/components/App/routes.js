@@ -2,7 +2,7 @@ import { v4 } from 'uuid'
 import Home from '../../pages/Home'
 import About from '../../pages/About'
 import Single from '../../pages/Single'
-import NotFound from '../../pages/NotFound'
+import PageNotFound from '../../pages/PageNotFound'
 
 const routes = [
   {
@@ -23,7 +23,7 @@ const routes = [
   },
   {
     key: v4(),
-    component: NotFound,
+    component: PageNotFound,
   },
 ]
 

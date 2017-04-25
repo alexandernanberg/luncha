@@ -4,7 +4,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding-top: 12px;
+  padding-top: 16px;
 }
 
 .listItem {
@@ -40,3 +40,52 @@
     color: map-get($colors, gray900);
   }
 }
+
+.column {
+  // margin-top: -96px;
+  width: 50%;
+  padding: 0;
+
+  @include breakpoint(mobile) {
+    width: 100%;
+  }
+}
+
+.information {
+  margin-top: -24px;
+  padding: 44px;
+  background-color: white;
+}
+
+.ingredientsList {
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+
+.ingredient {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 1.5rem;
+  line-height: 1.4em;
+  color: map-get($colors, gray800);
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: dashed 1px map-get($colors, gray300);
+
+  @include breakpoint(mobile) {
+    font-size: 1.3rem;
+  }
+
+  & b {
+    font-weight: 700;
+    font-size: 1.2em;
+    margin-right: 12px;
+    width: 32px;
+    text-align: right;
+  }
+}
+
+.figure {
+  margin-left: -24px;
+}
+

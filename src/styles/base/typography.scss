@@ -37,10 +37,16 @@ h1 {
 
 h2 {
   font-size: 2.4rem;
+  margin-bottom: 16px;
+
+  @include breakpoint(mobile) {
+    font-size: 1.8rem;
+  }
 }
 
 h3 {
   font-size: 2rem;
+  line-height: 1.2em;
   color: map-get($colors, gray900);
 
   @include breakpoint(mobile) {
@@ -61,4 +67,14 @@ h6 {
   font-size: 1.2rem;
   font-weight: 400;
   color: map-get($colors, gray600);
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.6em;
+  margin-bottom: 24px;
+
+  @include breakpoint(mobile) {
+    font-size: 1.3rem;
+  }
 }

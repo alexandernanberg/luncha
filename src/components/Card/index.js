@@ -14,7 +14,7 @@ const Card = props =>
     </div>
     <footer className={style.footer}>
       <h6>
-        <Icon name="time" /> <span>30 min</span>
+        <Icon name="time" /> <span>{props.time} min</span>
       </h6>
       <h6>
         {[...Array(Number(props.rating)).keys()].map(() => <Icon name="star" key={v4()} />)}

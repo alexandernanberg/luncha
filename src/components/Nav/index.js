@@ -15,10 +15,7 @@ const Nav = () =>
         <NavLink to="/inkopslista" className={style.link} activeClassName={style.linkActive}>Inköpslista</NavLink>
       </li>
       <li className={style.item}>
-        <NavLink to="/lagg-till" className={style.link} activeClassName={style.linkActive}>Lägg till</NavLink>
-      </li>
-      <li className={style.item}>
-        <NavLink to="/sok" className={style.link} activeClassName={style.linkActive}>Sök</NavLink>
+        <NavLink to="/lagg-till" className={style.link} activeClassName={style.linkActive}>Logga in</NavLink>
       </li>
     </ul>
   </nav>
