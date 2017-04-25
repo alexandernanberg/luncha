@@ -1,47 +1,6 @@
 @import '../../styles/core.scss';
 
-.list {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  padding-top: 16px;
-}
-
-.listItem {
-  padding: 0 32px;
-
-  @include breakpoint(mobile) {
-    padding: 0 12px;
-  }
-
-  & + & {
-    border-left: solid 1px map-get($colors, gray300);
-  }
-
-  & h4 {
-    color: map-get($colors, gray600);
-  }
-
-  & svg {
-    vertical-align: text-bottom;
-    font-size: 1.4em;
-    margin-right: 8px;
-    color: map-get($colors, gray900);
-  }
-
-  & span {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  & b {
-    font-size: 1.2em;
-    font-weight: 500;
-    color: map-get($colors, gray900);
-  }
-}
-
-.column {
+div.column {
   // margin-top: -96px;
   width: 50%;
   padding: 0;
@@ -53,13 +12,14 @@
 
 .information {
   margin-top: -24px;
+  margin-bottom: 32px;
   padding: 44px;
   background-color: white;
 }
 
 .ingredientsList {
   margin-top: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 44px;
 }
 
 .ingredient {
@@ -87,5 +47,25 @@
 
 .figure {
   margin-left: -24px;
+}
+
+.instructions {
+  margin-top: 24px;
+  counter-reset: instructions;
+}
+
+.instruction {
+  position: relative;
+  padding-left: 32px;
+  counter-increment: instructions;
+  color: map-get($colors, gray900);
+
+  &::before {
+    content: counter(instructions);
+    position: absolute;
+    top: 4px;
+    left: 0;
+    font-size: 2.2rem;
+  }
 }
 

@@ -2,10 +2,10 @@ import React from 'react'
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import { Grid, Column } from '../../components/Grid'
-import Icon from '../../components/Icon'
 import PageNotFound from '../PageNotFound'
 import store from '../../stores/RecipesStore'
 import style from './style.scss'
+import Info from './components/Info'
 
 class Single extends React.Component {
   componentWillMount() {
@@ -26,17 +26,7 @@ class Single extends React.Component {
       <div>
         <Hero>
           <h1>{recipe.name}</h1>
-          <ul className={style.list}>
-            <li className={style.listItem}>
-              <h4><Icon name="time" /><span><b>{recipe.time}</b> min</span></h4>
-            </li>
-            <li className={style.listItem}>
-              <h4><Icon name="serving" /><span><b>{recipe.servings}</b> pers</span></h4>
-            </li>
-            <li className={style.listItem}>
-              <h4><Icon name="star" /><span><b>{recipe.rating}</b> av 5</span></h4>
-            </li>
-          </ul>
+          <Info recipe={recipe} />
         </Hero>
         <Section>
           <Grid>
@@ -50,9 +40,11 @@ class Single extends React.Component {
                     </li>) }
                 </ul>
                 <h2>Så här gör du</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p>
+                <ul className={style.instructions}>
+                  <li className={style.instruction}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p></li>
+                  <li className={style.instruction}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p></li>
+                  <li className={style.instruction}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p></li>
+                </ul>
               </div>
             </Column>
             <Column className={style.column}>
