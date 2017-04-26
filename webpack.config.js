@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPLugin = require('html-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const SvgSpritePlugin = require('svg-sprite-loader/plugin')
 const autoprefixer = require('autoprefixer')
 
 const debug = process.env.NODE_ENV !== 'production'
@@ -26,7 +27,7 @@ module.exports = {
     hints: false,
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
@@ -79,12 +80,14 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new FriendlyErrorsPlugin(),
+    new SvgSpritePlugin(),
     new HtmlWebpackPLugin({
       template: './index.html',
     }),
   ] : [
     new webpack.EnvironmentPlugin('NODE_ENV'),
     new webpack.NamedModulesPlugin(),
+    new SvgSpritePlugin(),
     new HtmlWebpackPLugin({
       template: './index.html',
     }),
