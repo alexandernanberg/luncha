@@ -1,6 +1,6 @@
 import { v4 } from 'uuid'
 import Home from '../../pages/Home'
-import About from '../../pages/About'
+import Archive from '../../pages/Archive'
 import Single from '../../pages/Single'
 import PageNotFound from '../../pages/PageNotFound'
 
@@ -13,8 +13,9 @@ const routes = [
   },
   {
     key: v4(),
-    path: '/about',
-    component: About,
+    path: '/recept',
+    exact: true,
+    component: Archive,
   },
   {
     key: v4(),

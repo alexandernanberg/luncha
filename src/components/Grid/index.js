@@ -8,11 +8,16 @@ const Grid = props =>
     className={classNames(style.grid, props.className)}
   />
 
-const Column = props =>
+const Column = ({ small, medium, large, ...props }) =>
   <div
     {...props}
-    className={classNames(style.column, props.className)}
-    data-size={props.size}
+    className={classNames(
+      style.column,
+      props.className,
+      { [style[`small--${small}`]]: small },
+      { [style[`medium--${medium}`]]: medium },
+      { [style[`large--${large}`]]: large },
+    )}
   />
 
 export default Grid

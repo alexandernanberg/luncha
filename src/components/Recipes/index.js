@@ -5,7 +5,7 @@ import { Grid, Column } from '../Grid'
 
 const Recipes = (props) => {
   const columns = props.store.recipes.map(r => (
-    <Column key={r.id} style={{ width: '33%' }}>
+    <Column key={r.id} large="4" medium="6" small="12">
       <Card {...r} />
     </Column>
   ))

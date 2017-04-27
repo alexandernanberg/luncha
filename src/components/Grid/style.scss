@@ -8,9 +8,38 @@
 }
 
 .column {
+  display: flex;
   padding: 0 22px;
 
   @include breakpoint(mobile) {
     width: 100% !important;
+  }
+}
+
+.small {
+  @for $i from 1 through 12 {
+    &--#{$i} {
+      width: #{$i * (100 / 12) * 1%};
+    }
+  }
+}
+
+.medium {
+  @include breakpoint(mobile up) {
+    @for $i from 1 through 12 {
+      &--#{$i} {
+        width: #{$i * (100 / 12) * 1%};
+      }
+    }
+  }
+}
+
+.large {
+  @include breakpoint(tablet up) {
+    @for $i from 1 through 12 {
+      &--#{$i} {
+        width: #{$i * (100 / 12) * 1%};
+      }
+    }
   }
 }
