@@ -25,11 +25,6 @@
   white-space: nowrap;
   margin-bottom: 16px;
 
-  @include breakpoint(mobile) {
-    font-size: 2rem;
-    margin-bottom: 16px;
-  }
-
   & svg {
     font-size: 1.4em;
   }

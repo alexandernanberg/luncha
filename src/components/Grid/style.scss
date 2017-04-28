@@ -9,10 +9,14 @@
 
 .column {
   display: flex;
-  padding: 0 22px;
+  padding: 0 8px;
 
-  @include breakpoint(mobile) {
-    width: 100% !important;
+  @include breakpoint(small) {
+    padding: 0 12px;
+  }
+
+  @include breakpoint(medium) {
+    padding: 0 22px;
   }
 }
 
@@ -25,7 +29,7 @@
 }
 
 .medium {
-  @include breakpoint(mobile up) {
+  @include breakpoint(medium) {
     @for $i from 1 through 12 {
       &--#{$i} {
         width: #{$i * (100 / 12) * 1%};
@@ -35,7 +39,7 @@
 }
 
 .large {
-  @include breakpoint(tablet up) {
+  @include breakpoint(large) {
     @for $i from 1 through 12 {
       &--#{$i} {
         width: #{$i * (100 / 12) * 1%};

@@ -25,18 +25,21 @@ class Single extends React.Component {
     return (
       <div>
         <Hero>
-          <h1>{recipe.name}</h1>
+          <h1>{recipe.title}</h1>
           <Info recipe={recipe} />
         </Hero>
         <Section>
           <Grid>
-            <Column className={style.column}>
+            <Column small="12" large="6" className={style.figure}>
+              <img src={this.item.image} alt={this.item.title} />
+            </Column>
+            <Column small="12" large="6" className={style.column}>
               <div className={style.information}>
                 <h2>Det här behöver du</h2>
                 <ul className={style.ingredientsList}>
                   { recipe.ingredients.map(i =>
                     <li key={i.id} className={style.ingredient}>
-                      <b>{i.amount}</b> <span>{i.unit} {i.name}</span>
+                      <b>{i.amount}</b> <span>{i.unit} {i.title}</span>
                     </li>) }
                 </ul>
                 <h2>Så här gör du</h2>
@@ -46,11 +49,6 @@ class Single extends React.Component {
                   <li className={style.instruction}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p></li>
                 </ul>
               </div>
-            </Column>
-            <Column className={style.column}>
-              <figure className={style.figure}>
-                <img src={this.item.image} alt="" />
-              </figure>
             </Column>
           </Grid>
         </Section>

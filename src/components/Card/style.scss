@@ -6,12 +6,12 @@
   flex-grow: 1;
   text-decoration: none;
   color: map-get($colors, gray900);
-  margin-bottom: 44px;
+  margin-bottom: 24px;
   background-color: map-get($colors, white);
   transition: all 160ms map-get($easings, appleEase);
 
-  @include breakpoint(mobile) {
-    margin-bottom: 32px;
+  @include breakpoint(medium) {
+    margin-bottom: 44px;
   }
 
   &:hover {
@@ -38,23 +38,34 @@
 
 .body {
   flex-grow: 1;
-  padding: 24px;
+  padding: 12px;
   text-align: center;
+
+  @include breakpoint(medium) {
+    padding: 24px;
+  }
 }
 
 .footer {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding: 16px 24px 24px;
-  font-size: 1.4rem;
+  padding: 8px 12px 8px;
+
+  @include breakpoint(medium) {
+    padding: 16px 24px 24px;
+  }
 
   & svg {
-    font-size: 1.4em;
+    font-size: 1em;
+
+    @include breakpoint(medium) {
+      font-size: 1.4em;
+    }
   }
 
   & span {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: 10%;
   }
 }

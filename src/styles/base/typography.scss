@@ -26,55 +26,59 @@ em {
 }
 
 h1 {
-  font-size: 3.2rem;
+  font-size: 2rem;
   line-height: 1.4em;
   margin-bottom: 0.6em;
 
-  @include breakpoint(mobile) {
-    font-size: 2rem;
+  @include breakpoint(medium) {
+    font-size: 3.2rem;
   }
 }
 
 h2 {
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   margin-bottom: 16px;
 
-  @include breakpoint(mobile) {
-    font-size: 1.8rem;
+  @include breakpoint(medium) {
+    font-size: 2.4rem;
   }
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.4rem;
   line-height: 1.2em;
   color: map-get($colors, gray900);
 
-  @include breakpoint(mobile) {
-    font-size: 1.6rem;
+  @include breakpoint(medium) {
+    font-size: 2rem;
   }
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: map-get($colors, gray900);
 
-  @include breakpoint(mobile) {
-    font-size: 1.2rem;
+  @include breakpoint(medium) {
+    font-size: 1.5rem;
   }
 }
 
 h6 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 400;
   color: map-get($colors, gray600);
+
+  @include breakpoint(medium) {
+    font-size: 1.2rem;
+  }
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   line-height: 1.6em;
   margin-bottom: 24px;
 
-  @include breakpoint(mobile) {
-    font-size: 1.3rem;
+  @include breakpoint(medium) {
+    font-size: 1.5rem;
   }
 }

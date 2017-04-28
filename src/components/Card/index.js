@@ -10,7 +10,7 @@ const Card = props =>
       <img src={props.image} alt="" />
     </figure>
     <div className={style.body}>
-      <h3>{props.name}</h3>
+      <h3>{props.title}</h3>
     </div>
     <footer className={style.footer}>
       <h6>
