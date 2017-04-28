@@ -1,3 +1,5 @@
+import 'babel-polyfill'
+
 import React from 'react'
 import ReactDom from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
@@ -10,18 +12,18 @@ const render = (Component) => {
     <AppContainer>
       <Component />
     </AppContainer>,
-  document.getElementById('app'))
+    document.getElementById('app'),
+  )
 }
 
 render(App)
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => { render(App) })
+  module.hot.accept('./components/App', () => {
+    render(App)
+  })
 }
 
 if (process.env.NODE_ENV === 'production') {
-  OfflinePluginRuntime.install({
-    onUpdateReady: () => OfflinePluginRuntime.applyUpdate(),
-    onUpdated: () => location.reload(),
-  })
+  OfflinePluginRuntime.install()
 }

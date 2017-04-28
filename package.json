@@ -8,14 +8,13 @@
     "url": "https://github.com/alexandernanberg/luncha"
   },
   "browserslist": [
-    "IE 11",
     "last 2 versions"
   ],
   "scripts": {
     "test": "eslint ./src",
     "start": "NODE_ENV=production node server.js",
-    "clean": "find public \\( -name '*.js' -o -name '*.html' \\) -mindepth 1 -exec rm -rf {} + || exit 0",
-    "build": "npm run clean && NODE_ENV=production webpack",
+    "clean": "find public \\( -name '*.js' -o -name '*.html' -o -name '*.map' \\) -mindepth 1 -exec rm -rf {} + || exit 0",
+    "build": "npm run clean && NODE_ENV=production webpack -p",
     "dev": "webpack-dev-server",
     "docker:build": "docker build -t registry.gitlab.com/nanberg/luncha .",
     "docker:push": "docker push registry.gitlab.com/nanberg/luncha",
@@ -53,7 +52,7 @@
     "reset-css": "^2.2.0",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
-    "svg-sprite-loader": "^2.0.0-alpha.4",
+    "svg-sprite-loader": "^2.0.0",
     "uuid": "^3.0.1",
     "webpack": "^2.4.1"
   },
@@ -64,6 +63,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "webpack-dev-server": "^2.4.4"
+    "webpack-dev-server": "^2.4.5"
   }
 }

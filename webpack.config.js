@@ -13,7 +13,6 @@ module.exports = {
   devtool: debug ? 'cheap-module-eval-source-map' : 'source-map',
   entry: {
     app: [
-      'babel-polyfill',
       'react-hot-loader/patch',
       './client.js',
     ],
@@ -68,6 +67,14 @@ module.exports = {
       },
     ],
   },
+  stats: {
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    chunkOrigins: false,
+    modules: false,
+    maxModules: 0,
+  },
   devServer: {
     host: '0.0.0.0',
     contentBase: path.join(__dirname, 'public'),
@@ -85,7 +92,6 @@ module.exports = {
       template: './index.html',
     }),
   ] : [
-    new webpack.EnvironmentPlugin('NODE_ENV'),
     new webpack.NamedModulesPlugin(),
     new SvgSpritePlugin(),
     new HtmlWebpackPLugin({
@@ -98,17 +104,6 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       minChunks: Infinity,
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-      },
-      mangle: true,
-      sourcemap: true,
     }),
     new OfflinePlugin({
       version: '[hash]',
