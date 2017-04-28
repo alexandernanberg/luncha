@@ -31,9 +31,9 @@ class Recipe {
 
 export class RecipesStore {
   @observable recipes = [
-    new Recipe('Hamburgare med pommes', 4, 30, 'https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg?h=350&auto=compress&cs=tinysrgb'),
-    new Recipe('Baconpasta med champinjoner och spenat', 5, 60, 'https://static.pexels.com/photos/169743/pexels-photo-169743.jpeg?h=350&auto=compress&cs=tinysrgb'),
-    new Recipe('Ungsbakad lax med sallad', 3, 25, 'https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Hamburgare med pommes', 4, 30, 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Baconpasta med champinjoner och spenat', 5, 60, 'https://images.pexels.com/photos/169743/pexels-photo-169743.jpeg?h=350&auto=compress&cs=tinysrgb'),
+    new Recipe('Ungsbakad lax med sallad', 3, 25, 'https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?h=350&auto=compress&cs=tinysrgb'),
     new Recipe('Grillspett', 3, 30, 'https://images.pexels.com/photos/111131/meat-vegetables-gemuesepiess-mushrooms-111131.jpeg?h=350&auto=compress&cs=tinysrgb'),
     new Recipe('Grillad kyckling', 3, 40, 'https://images.pexels.com/photos/106343/pexels-photo-106343.jpeg?h=350&auto=compress&cs=tinysrgb'),
     new Recipe('Pizza', 3, 10, 'https://images.pexels.com/photos/65132/pexels-photo-65132.jpeg?h=350&auto=compress&cs=tinysrgb'),
