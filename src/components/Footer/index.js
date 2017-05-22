@@ -4,7 +4,7 @@ import { Grid } from '../Grid'
 import Icon from '../Icon'
 import style from './style.scss'
 
-const Footer = () =>
+const Footer = () => (
   <footer className={style.component}>
     <Grid className={style.grid}>
       <Link to="/" className={style.logo}>
@@ -13,5 +13,6 @@ const Footer = () =>
       <p className={style.copyright}>&copy; {new Date().getFullYear()} luncha.co</p>
     </Grid>
   </footer>
+)
 
 export default Footer

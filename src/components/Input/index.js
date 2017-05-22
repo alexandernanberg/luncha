@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 import style from './style.scss'
 
-const Input = ({ className, type, ...props }) =>
+const Input = ({ className, type, ...props }) => (
   <input
     {...props}
     type={type}
@@ -11,5 +11,6 @@ const Input = ({ className, type, ...props }) =>
       props.className,
     )}
   />
+)
 
 export default Input

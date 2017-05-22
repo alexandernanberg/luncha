@@ -1,4 +1,5 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import { Grid, Column } from '../../components/Grid'
@@ -11,14 +12,21 @@ class Single extends React.Component {
   componentWillMount() {
     const slug = this.props.match.params.slug
     this.item = store.getRecipeBySlug(slug)
+    console.log(this.item)
   }
 
   item = null
 
   render() {
-    if (!this.item) {
-      return <PageNotFound />
-    }
+    if (!this.item) return <PageNotFound />
+
+    // {
+    //   recipe.ingredients.map(i => (
+    //     <li key={i.id} className={style.ingredient}>
+    //       <b>{i.amount}</b> <span>{i.unit} {i.title}</span>
+    //     </li>
+    //   ))
+    // }
 
     const recipe = this.item
 
@@ -37,10 +45,7 @@ class Single extends React.Component {
               <div className={style.information}>
                 <h2>Det här behöver du</h2>
                 <ul className={style.ingredientsList}>
-                  { recipe.ingredients.map(i =>
-                    <li key={i.id} className={style.ingredient}>
-                      <b>{i.amount}</b> <span>{i.unit} {i.title}</span>
-                    </li>) }
+
                 </ul>
                 <h2>Så här gör du</h2>
                 <ul className={style.instructions}>
@@ -57,4 +62,4 @@ class Single extends React.Component {
   }
 }
 
-export default Single
+export default observer(Single)

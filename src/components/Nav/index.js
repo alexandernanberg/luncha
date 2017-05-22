@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import style from './style.scss'
 
-const Nav = () =>
+const Nav = () => (
   <nav className={style.component}>
     <ul className={style.list}>
       <li className={style.item}>
@@ -19,5 +19,6 @@ const Nav = () =>
       </li>
     </ul>
   </nav>
+)
 
 export default Nav

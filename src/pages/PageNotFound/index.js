@@ -1,9 +1,13 @@
 import React from 'react'
 import Hero from '../../components/Hero'
 
-const NotFound = () =>
+const NotFound = () => (
   <Hero>
-    <h1>Error 404 – Sidan hittades inte.</h1>
+    <h1>
+      Error 404 – Oops, sidan hittades inte&nbsp;
+      <span role="img" aria-label="oops">😳</span>
+    </h1>
   </Hero>
+)
 
 export default NotFound

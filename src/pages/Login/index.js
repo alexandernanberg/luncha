@@ -4,7 +4,7 @@ import { observer } from 'mobx-react'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import style from './style.scss'
-import firebase from '../../firebase'
+// import firebase from '../../firebase'
 
 class Login extends React.Component {
   state = {

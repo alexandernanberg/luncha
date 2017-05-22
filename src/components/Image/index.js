@@ -17,13 +17,14 @@ const LoadingComponent = (
   </div>
 )
 
-const Image = props =>
+const Image = props => (
   <LazyImage
     src={props.src}
     alt={props.alt}
     preloader={LoadingComponent}
     fallback={FallbackComponent}
   />
+)
 
 export default Image
 export { LazyImage }

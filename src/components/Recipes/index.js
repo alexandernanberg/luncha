@@ -1,12 +1,15 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import Card from '../Card'
 import Section from '../Section'
 import { Grid, Column } from '../Grid'
 
+
 const Recipes = (props) => {
-  const columns = props.store.recipes.map(r => (
-    <Column key={r.id} small="6" large="4">
-      <Card {...r} />
+  const data = props.store.json
+  const columns = Object.keys(data).map(key => (
+    <Column key={key} small="6" large="4">
+      <Card {...data[key]} />
     </Column>
   ))
 
@@ -19,4 +22,4 @@ const Recipes = (props) => {
   )
 }
 
-export default Recipes
+export default observer(Recipes)

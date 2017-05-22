@@ -5,7 +5,7 @@ import Footer from '../Footer'
 import routes from './routes'
 import ScrollRestoration from './ScrollRestoration'
 
-const App = () =>
+const App = () => (
   <Router>
     <ScrollRestoration>
       <div style={{ minHeight: '100vh', display: 'flex', flexFlow: 'column wrap' }}>
@@ -17,5 +17,6 @@ const App = () =>
       </div>
     </ScrollRestoration>
   </Router>
+)
 
 export default App
