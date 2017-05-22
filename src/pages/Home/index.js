@@ -13,5 +13,4 @@ const Index = () =>
     <Recipes store={store} />
   </div>
 
-
 export default observer(Index)

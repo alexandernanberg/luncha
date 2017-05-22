@@ -2,12 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import Icon from '../Icon'
+import Image from '../Image'
 import style from './style.scss'
 
-const Card = props =>
+const Card = props => (
   <Link to={`/recept/${props.slug}`} className={style.component}>
     <figure className={style.figure}>
-      <img src={props.image} alt="" />
+      <Image src={props.image} alt={props.title} />
     </figure>
     <div className={style.body}>
       <h3>{props.title}</h3>
@@ -21,5 +22,6 @@ const Card = props =>
       </h6>
     </footer>
   </Link>
+)
 
 export default Card

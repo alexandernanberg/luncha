@@ -1,5 +1,7 @@
 import { observable, action } from 'mobx'
 import { v4 } from 'uuid'
+import slugify from 'slugify'
+// import firebase from '../firebase'
 
 class Ingredient {
   constructor(title, amount, unit) {
@@ -18,7 +20,7 @@ class Recipe {
     this.rating = rating
     this.time = time
     this.servings = 4
-    this.slug = title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
+    this.slug = slugify(title).toLowerCase()
     this.ingredients = [
       new Ingredient('Köttfärs', 400, 'gram'),
       new Ingredient('Mjöl', 1, 'dl'),
@@ -41,6 +43,7 @@ export class RecipesStore {
     new Recipe('Fish and chips', 4, 50, 'https://images.pexels.com/photos/62097/pexels-photo-62097.jpeg?h=350&auto=compress&cs=tinysrgb'),
     new Recipe('Räkpasta med soltorkade tomater', 2, 50, 'https://images.pexels.com/photos/65131/pexels-photo-65131.jpeg?h=350&auto=compress&cs=tinysrgb'),
   ]
+
   @action getRecipeBySlug(slug) {
     return this.recipes.find(r => r.slug === slug)
   }

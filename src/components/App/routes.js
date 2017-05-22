@@ -3,6 +3,7 @@ import Home from '../../pages/Home'
 import Archive from '../../pages/Archive'
 import Single from '../../pages/Single'
 import PageNotFound from '../../pages/PageNotFound'
+import Login from '../../pages/Login'
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     key: v4(),
     path: '/recept/:slug',
     component: Single,
+  },
+  {
+    key: v4(),
+    path: '/login',
+    component: Login,
   },
   {
     key: v4(),

@@ -1,0 +1,40 @@
+@import '../../styles/core.scss';
+
+.component {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  width: 72%;
+  max-width: 320px;
+}
+
+.label {
+  width: 100%;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.3rem;
+  line-height: 1em;
+  font-weight: 600;
+  color: map-get($colors, gray900);
+}
+
+.button {
+  width: 100%;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 32px;
+  font-size: 1.1rem;
+  color: map-get($colors, orange);
+  text-decoration: none;
+}

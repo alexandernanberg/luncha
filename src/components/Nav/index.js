@@ -15,7 +15,7 @@ const Nav = () =>
         <NavLink to="/inkopslista" className={style.link} activeClassName={style.linkActive}>Inköpslista</NavLink>
       </li>
       <li className={style.item}>
-        <NavLink to="/lagg-till" className={style.link} activeClassName={style.linkActive}>Logga in</NavLink>
+        <NavLink to="/login" className={style.link} activeClassName={style.linkActive}>Logga in</NavLink>
       </li>
     </ul>
   </nav>

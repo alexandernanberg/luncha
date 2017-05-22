@@ -8,7 +8,7 @@ import ScrollRestoration from './ScrollRestoration'
 const App = () =>
   <Router>
     <ScrollRestoration>
-      <div>
+      <div style={{ minHeight: '100vh', display: 'flex', flexFlow: 'column wrap' }}>
         <Header />
         <Switch>
           {routes.map(props => <Route {...props} />)}

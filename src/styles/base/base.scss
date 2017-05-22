@@ -26,3 +26,7 @@ img {
   background-color: map-get($colors, orange);
   color: map-get($colors, white);
 }
+
+a {
+  -webkit-tap-highlight-color: rgba(white, 0);
+}
