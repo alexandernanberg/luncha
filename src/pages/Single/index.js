@@ -39,7 +39,8 @@ class Single extends React.Component {
                   {
                     Object.keys(recipe.ingredients).map(key => (
                       <li key={recipe.ingredients[key].id} className={style.ingredient}>
-                        <b>{recipe.ingredients[key].amount}</b> <span>{recipe.ingredients[key].unit} {recipe.ingredients[key].title}</span>
+                        <b>{recipe.ingredients[key].amount}</b>&nbsp;
+                        <span>{recipe.ingredients[key].unit} {recipe.ingredients[key].title}</span>
                       </li>
                     ))
                   }
