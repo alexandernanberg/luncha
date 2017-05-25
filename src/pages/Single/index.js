@@ -1,34 +1,25 @@
 import React from 'react'
-import { observer } from 'mobx-react'
+import { observer, inject } from 'mobx-react'
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import { Grid, Column } from '../../components/Grid'
 import PageNotFound from '../PageNotFound'
-import store from '../../stores/RecipesStore'
 import style from './style.scss'
 import Info from './components/Info'
 
+@inject('recipeStore')
+@observer
 class Single extends React.Component {
   componentWillMount() {
-    const slug = this.props.match.params.slug
-    this.item = store.getRecipeBySlug(slug)
-    console.log(this.item)
+    this.props.recipeStore.currentRecipeSlug = this.props.match.params.slug
   }
 
-  item = null
-
   render() {
-    if (!this.item) return <PageNotFound />
+    const { recipeStore } = this.props
+    const recipe = recipeStore.entities[recipeStore.currentEntityKey]
 
-    // {
-    //   recipe.ingredients.map(i => (
-    //     <li key={i.id} className={style.ingredient}>
-    //       <b>{i.amount}</b> <span>{i.unit} {i.title}</span>
-    //     </li>
-    //   ))
-    // }
-
-    const recipe = this.item
+    if (!recipe) return <PageNotFound />
+    if (!recipe.title) return <h1>Laddar...</h1>
 
     return (
       <div>
@@ -39,19 +30,37 @@ class Single extends React.Component {
         <Section>
           <Grid>
             <Column small="12" large="6" className={style.figure}>
-              <img src={this.item.image} alt={this.item.title} />
+              <img src={recipe.image} alt={recipe.title} />
             </Column>
             <Column small="12" large="6" className={style.column}>
               <div className={style.information}>
                 <h2>Det här behöver du</h2>
                 <ul className={style.ingredientsList}>
-
+                  {
+                    Object.keys(recipe.ingredients).map(key => (
+                      <li key={recipe.ingredients[key].id} className={style.ingredient}>
+                        <b>{recipe.ingredients[key].amount}</b> <span>{recipe.ingredients[key].unit} {recipe.ingredients[key].title}</span>
+                      </li>
+                    ))
+                  }
                 </ul>
                 <h2>Så här gör du</h2>
                 <ul className={style.instructions}>
-                  <li className={style.instruction}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p></li>
-                  <li className={style.instruction}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p></li>
-                  <li className={style.instruction}><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam, similique voluptate, optio culpa quo totam? Excepturi natus sapiente atque.</p></li>
+                  <li className={style.instruction}>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
+                      similique voluptate, optio culpa quo totam?
+                      Excepturi natus sapiente atque.</p>
+                  </li>
+                  <li className={style.instruction}>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
+                      similique voluptate, optio culpa quo totam?
+                      Excepturi natus sapiente atque.</p>
+                  </li>
+                  <li className={style.instruction}>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
+                      similique voluptate, optio culpa quo totam?
+                      Excepturi natus sapiente atque.</p>
+                  </li>
                 </ul>
               </div>
             </Column>
@@ -62,4 +71,4 @@ class Single extends React.Component {
   }
 }
 
-export default observer(Single)
+export default Single

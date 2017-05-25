@@ -61,10 +61,10 @@ module.exports = {
             {
               loader: 'css-loader',
               options: {
-                minimize: true,
+                minimize: !debug,
                 importLoaders: 2,
                 modules: true,
-                localIdentName: debug ? '[folder]__[local]--[hash:base64:4]' : '_[hash:base64:6]',
+                localIdentName: debug ? '[folder]__[local]' : '[hash:base64:6]',
               },
             },
             {
@@ -84,7 +84,7 @@ module.exports = {
         loader: {
           loader: 'svg-sprite-loader',
           options: {
-            symbolId: '[name]--[hash:base64:4]',
+            symbolId: debug ? '[name]' : '[name]__[hash:base64:4]',
           },
         },
       },

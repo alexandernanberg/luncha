@@ -5,23 +5,52 @@ import Icon from '../Icon'
 import Image from '../Image'
 import style from './style.scss'
 
-const Card = props => (
-  <Link to={`/recept/${props.slug}`} className={style.component}>
+const PlaceholderCard = () => (
+  <div className={style.component}>
     <figure className={style.figure}>
-      <Image src={props.image} alt={props.title} />
+      <Image src="" />
     </figure>
     <div className={style.body}>
-      <h3>{props.title}</h3>
+      <h3>
+        <span className={style.placeholder} />
+        <span className={style.placeholder} />
+      </h3>
     </div>
     <footer className={style.footer}>
       <h6>
-        <Icon name="time" /> <span>{props.time} min</span>
+        <span className={style.placeholder} />
       </h6>
       <h6>
-        {[...Array(Number(props.rating)).keys()].map(() => <Icon name="star" key={v4()} />)}
+        <span className={style.placeholder} />
       </h6>
     </footer>
-  </Link>
+  </div>
 )
 
+const Card = (props) => {
+  if (props.placeholder) {
+    return <PlaceholderCard />
+  }
+
+  return (
+    <Link to={`/recept/${props.slug}`} className={style.component}>
+      <figure className={style.figure}>
+        <Image src={props.image} alt={props.title} />
+      </figure>
+      <div className={style.body}>
+        <h3>{props.title}</h3>
+      </div>
+      <footer className={style.footer}>
+        <h6>
+          <Icon name="time" /> <span>{props.time} min</span>
+        </h6>
+        <h6>
+          {[...Array(Number(props.rating)).keys()].map(() => <Icon name="star" key={v4()} />)}
+        </h6>
+      </footer>
+    </Link>
+  )
+}
+
 export default Card
+export { PlaceholderCard }

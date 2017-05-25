@@ -75,5 +75,21 @@
   & span {
     display: inline-block;
     vertical-align: 20%;
+
+    @include breakpoint(medium) {
+      vertical-align: middle;
+    }
+  }
+}
+
+.placeholder {
+  display: inline-block;
+  width: 80%;
+  min-width: 3em;
+  height: 0.8em;
+  background-color: map-get($colors, gray100);
+
+  &:nth-child(2) {
+    width: 40%;
   }
 }
