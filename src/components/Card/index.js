@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { v4 } from 'uuid'
+import shortid from 'shortid'
 import Icon from '../Icon'
 import Image from '../Image'
 import style from './style.scss'
@@ -45,7 +45,7 @@ const Card = (props) => {
           <Icon name="time" /> <span>{props.time} min</span>
         </h6>
         <h6>
-          {[...Array(Number(props.rating)).keys()].map(() => <Icon name="star" key={v4()} />)}
+          {[...Array(Number(props.rating)).keys()].map(() => <Icon name="star" key={shortid()} />)}
         </h6>
       </footer>
     </Link>

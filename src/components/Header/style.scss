@@ -4,21 +4,30 @@
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   max-width: 1170px;
   margin: 0 auto;
-  padding: 16px 0 0;
+  box-shadow: 0 2px 4px rgba(black, 0.05);
 
   @include breakpoint(medium) {
     flex-flow: row nowrap;
+    justify-content: space-between;
     padding: 24px 32px;
+    box-shadow: none;
+  }
+}
+
+.top {
+  padding: 12px 0 8px;
+  // background-color: map-get($colors, orange);
+
+  @include breakpoint(medium) {
+    padding: 0;
   }
 }
 
 .logo {
-  margin-bottom: 16px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: map-get($colors, orange);
   text-decoration: none;
   white-space: nowrap;
@@ -29,11 +38,11 @@
   }
 
   & svg {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
 
   & span {
     display: inline-block;
-    vertical-align: middle;
+    vertical-align: baseline;
   }
 }

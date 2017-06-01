@@ -22,7 +22,7 @@ class Single extends React.Component {
     if (!recipe.title) return <h1>Laddar...</h1>
 
     return (
-      <div>
+      <main>
         <Hero>
           <h1>{recipe.title}</h1>
           <Info recipe={recipe} />
@@ -67,7 +67,7 @@ class Single extends React.Component {
             </Column>
           </Grid>
         </Section>
-      </div>
+      </main>
     )
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import { v4 } from 'uuid'
+import shortid from 'shortid'
 import Card from '../Card'
 import Section from '../Section'
 import { Grid, Column } from '../Grid'
@@ -17,7 +17,7 @@ const Recipes = ({ recipeStore }) => {
 
   if (!Object.keys(data).length) {
     data = [...Array(6).keys()].reduce((acc) => {
-      acc[v4()] = { placeholder: true }
+      acc[shortid()] = { placeholder: true }
       return acc
     }, {})
   }

@@ -6,12 +6,13 @@ import Footer from '../Footer'
 import routes from './routes'
 import ScrollRestoration from './ScrollRestoration'
 import stores from '../../stores'
+import style from './style.scss'
 
 const App = () => (
   <Provider {...stores}>
     <Router>
       <ScrollRestoration>
-        <div style={{ minHeight: '100vh', display: 'flex', flexFlow: 'column wrap' }}>
+        <div className={style.component}>
           <Header />
           <Switch>
             {routes.map(props => <Route {...props} />)}

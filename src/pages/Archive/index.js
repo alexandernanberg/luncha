@@ -4,9 +4,9 @@ import Recipes from '../../components/Recipes'
 import store from '../../stores/RecipeStore'
 
 const Archive = () => (
-  <div>
+  <main>
     <Recipes store={store} />
-  </div>
+  </main>
 )
 
 export default observer(Archive)

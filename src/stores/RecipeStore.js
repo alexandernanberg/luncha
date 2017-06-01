@@ -1,11 +1,11 @@
 import { computed, observable, action, toJS } from 'mobx'
-import { v4 } from 'uuid'
+import shortid from 'shortid'
 import slugify from 'slugify'
 import { database } from '../firebase'
 
 class Ingredient {
   constructor(title, amount, unit) {
-    this.id = v4()
+    this.id = shortid()
     this.title = title
     this.amount = amount
     this.unit = unit

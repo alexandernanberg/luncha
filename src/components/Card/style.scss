@@ -4,9 +4,11 @@
   display: flex;
   flex-flow: column wrap;
   flex-grow: 1;
-  text-decoration: none;
+  margin-bottom: 16px;
+  border-radius: 3px;
+  overflow: hidden;
   color: map-get($colors, gray900);
-  margin-bottom: 24px;
+  text-decoration: none;
   background-color: map-get($colors, white);
   transition: all 160ms map-get($easings, appleEase);
 
@@ -90,6 +92,7 @@
   background-color: map-get($colors, gray100);
 
   &:nth-child(2) {
+    margin-top: 0.2em;
     width: 40%;
   }
 }

@@ -1,4 +1,4 @@
-import { v4 } from 'uuid'
+import shortid from 'shortid'
 import Home from '../../pages/Home'
 import Archive from '../../pages/Archive'
 import Single from '../../pages/Single'
@@ -7,29 +7,29 @@ import Login from '../../pages/Login'
 
 const routes = [
   {
-    key: v4(),
+    key: shortid(),
     path: '/',
     exact: true,
     component: Home,
   },
   {
-    key: v4(),
+    key: shortid(),
     path: '/recept',
     exact: true,
     component: Archive,
   },
   {
-    key: v4(),
+    key: shortid(),
     path: '/recept/:slug',
     component: Single,
   },
   {
-    key: v4(),
+    key: shortid(),
     path: '/login',
     component: Login,
   },
   {
-    key: v4(),
+    key: shortid(),
     component: PageNotFound,
   },
 ]

@@ -6,6 +6,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const SvgSpritePlugin = require('svg-sprite-loader/plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const debug = process.env.NODE_ENV !== 'production'
 
@@ -121,6 +122,7 @@ module.exports = {
         preserveLineBreaks: true,
       },
     }),
+    // new BundleAnalyzerPlugin(),
     new OfflinePlugin({
       version: '[hash]',
       AppCache: false,
