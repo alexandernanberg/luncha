@@ -1,7 +1,5 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import axios from 'axios'
-import shortid from 'shortid'
 import Card from '../common/Card'
 import Section from '../common/Section'
 import { Grid, Column } from '../common/Grid'
@@ -12,33 +10,36 @@ const RecipeColumn = props => (
   </Column>
 )
 
-const Recipes = ({ recipeStore }) => {
-  let data = recipeStore.entities
-
-  axios('https://api.luncha.co/v1/recipes')
-    .then((res) => {
-      console.log(res.data)
-    })
-    .catch(err => console.error(err))
-
-  if (!Object.keys(data).length) {
-    data = [...Array(6).keys()].reduce((acc) => {
-      acc[shortid()] = { placeholder: true }
-      return acc
-    }, {})
+@inject('recipeStore')
+@observer
+class Recipes extends React.Component {
+  componentDidMount() {
+    this.props.recipeStore.fetchRecipes()
   }
 
-  const recipes = Object.keys(data).map(key => (
-    <RecipeColumn key={key} {...data[key]} />
-  ))
+  render() {
+    const { recipeStore } = this.props
+    let entities = recipeStore.entities
 
-  return (
-    <Section>
-      <Grid>
-        {recipes}
-      </Grid>
-    </Section>
-  )
+    if (!Object.keys(entities).length) {
+      entities = [...Array(6).keys()].reduce((acc, curr, index) => {
+        acc[index] = { placeholder: true }
+        return acc
+      }, {})
+    }
+
+    const recipes = Object.keys(entities).map(key => (
+      <RecipeColumn key={key} {...entities[key]} />
+    ))
+
+    return (
+      <Section>
+        <Grid>
+          {recipes}
+        </Grid>
+      </Section>
+    )
+  }
 }
 
-export default inject('recipeStore')(observer(Recipes))
+export default Recipes

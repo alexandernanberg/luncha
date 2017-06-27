@@ -1,6 +1,6 @@
 import { computed, observable, action, toJS } from 'mobx'
+import axios from 'axios'
 import shortid from 'shortid'
-import slugify from 'slugify'
 
 class Ingredient {
   constructor(title, amount, unit) {
@@ -12,14 +12,14 @@ class Ingredient {
 }
 
 class Recipe {
-  constructor(key, title, rating, time, servings, image) {
-    this.id = key
-    this.title = title
-    this.image = image
-    this.rating = rating
-    this.time = time
-    this.servings = servings
-    this.slug = slugify(this.title).toLowerCase()
+  constructor(data) {
+    this.id = data._id // eslint-disable-line no-underscore-dangle
+    this.title = data.name
+    this.image = data.image
+    this.rating = data.rating
+    this.time = data.time
+    this.servings = data.servings
+    this.slug = data.slug
     this.ingredients = [
       new Ingredient('Köttfärs', 400, 'gram'),
       new Ingredient('Mjöl', 1, 'dl'),
@@ -34,19 +34,29 @@ export class Recipes {
   @observable recipes = observable.map({})
   @observable currentRecipeSlug = null
 
-  constructor() {
-    this.recipes = {
-      [shortid()]: new Recipe('', 'Hamburgare med pommes', 4, 20, 4, 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?h=350&auto=compress&cs=tinysrgb'),
-      [shortid()]: new Recipe('', 'Baconpasta med champinjoner och spenat', 4, 20, 4, 'https://images.pexels.com/photos/169743/pexels-photo-169743.jpeg?h=350&auto=compress&cs=tinysrgb'),
-      [shortid()]: new Recipe('', 'Ungsbakad lax med sallad', 4, 20, 4, 'https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?h=350&auto=compress&cs=tinysrgb'),
-      [shortid()]: new Recipe('', 'Hamburgare med pommes', 4, 20, 4, 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?h=350&auto=compress&cs=tinysrgb'),
-      [shortid()]: new Recipe('', 'Baconpasta med champinjoner och spenat', 4, 20, 4, 'https://images.pexels.com/photos/169743/pexels-photo-169743.jpeg?h=350&auto=compress&cs=tinysrgb'),
-      [shortid()]: new Recipe('', 'Ungsbakad lax med sallad', 4, 20, 4, 'https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?h=350&auto=compress&cs=tinysrgb'),
-    }
-  }
-
   @computed get entities() {
     return toJS(this.recipes)
+  }
+
+  @computed get currentEntityKey() {
+    return Object.keys(this.entities)
+      .find(key => this.currentRecipeSlug === this.entities[key].slug)
+  }
+
+  @action fetchRecipes() {
+    axios('https://api.luncha.co/v1/recipes')
+      .then(({ data }) => {
+        const entities = data.entities.reduce((acc, entity) => {
+          acc[entity._id] = new Recipe(entity) // eslint-disable-line no-underscore-dangle
+          return acc
+        }, {})
+
+        this.recipes = {
+          ...entities,
+          ...this.entities,
+        }
+      })
+      .catch(err => console.error(err))
   }
 }
 
