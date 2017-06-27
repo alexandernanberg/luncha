@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 # Node packages
 ADD package.json /usr/src/app
-RUN npm install --production -q
+RUN npm install -q
 
 # Add app files
 ADD . /usr/src/app
