@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Icon from '../Icon'
+import Icon from '../common/Icon'
 import Nav from '../Nav'
 import style from './style.scss'
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Grid } from '../Grid'
-import Icon from '../Icon'
+import { Grid } from '../common/Grid'
+import Icon from '../common/Icon'
 import style from './style.scss'
 
 const Footer = () => (

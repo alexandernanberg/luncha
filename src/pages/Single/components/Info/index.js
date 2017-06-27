@@ -1,8 +1,8 @@
 import React from 'react'
-import Icon from '../../../../components/Icon'
+import Icon from '../../../../components/common/Icon'
 import style from './style.scss'
 
-const Info = props =>
+const Info = props => (
   <ul className={style.component}>
     <li className={style.item}>
       <h4>
@@ -23,5 +23,6 @@ const Info = props =>
       </h4>
     </li>
   </ul>
+)
 
 export default Info

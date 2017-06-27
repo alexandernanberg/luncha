@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { observer } from 'mobx-react'
-import Button from '../../components/Button'
-import Input from '../../components/Input'
+import Button from '../../components/common/Button'
+import Input from '../../components/common/Input'
 import style from './style.scss'
-import firebase from '../../firebase'
 
 class Login extends React.Component {
   state = {
@@ -15,19 +14,6 @@ class Login extends React.Component {
   handleOnSubmit = (e) => {
     e.preventDefault()
     console.log(this.state)
-    firebase.auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((res) => {
-        this.setState({ email: '', password: '' })
-        console.log(res)
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(error, errorCode, errorMessage)
-        // ...
-      })
   }
 
   render() {

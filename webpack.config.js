@@ -6,9 +6,8 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const SvgSpritePlugin = require('svg-sprite-loader/plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const debug = process.env.NODE_ENV !== 'production'
+const isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: {
@@ -18,12 +17,12 @@ module.exports = {
     ],
   },
   output: {
-    path: debug ? path.join(__dirname, 'public') : path.join(__dirname, 'public', 'dist'),
-    filename: debug ? '[name].js' : '[name].[chunkhash].js',
-    publicPath: debug ? '/' : '/dist/',
+    path: isDev ? path.join(__dirname, 'public') : path.join(__dirname, 'public', 'dist'),
+    filename: isDev ? '[name].js' : '[name].[chunkhash].js',
+    publicPath: isDev ? '/' : '/dist/',
   },
   context: path.join(__dirname, 'src'),
-  devtool: debug ? 'cheap-module-inline-source-map' : 'source-map',
+  devtool: isDev ? 'cheap-module-inline-source-map' : 'source-map',
   performance: {
     hints: false,
   },
@@ -62,10 +61,10 @@ module.exports = {
             {
               loader: 'css-loader',
               options: {
-                minimize: !debug,
+                minimize: !isDev,
                 importLoaders: 2,
                 modules: true,
-                localIdentName: debug ? '[folder]__[local]' : '[hash:base64:6]',
+                localIdentName: isDev ? '[folder]__[local]' : '[hash:base64:6]',
               },
             },
             {
@@ -76,7 +75,15 @@ module.exports = {
                 ],
               },
             },
-            'sass-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                data: '@import "core";',
+                includePaths: [
+                  path.join(__dirname, 'src/styles'),
+                ],
+              },
+            },
           ],
         }),
       },
@@ -85,13 +92,13 @@ module.exports = {
         loader: {
           loader: 'svg-sprite-loader',
           options: {
-            symbolId: debug ? '[name]' : '[name]__[hash:base64:4]',
+            symbolId: isDev ? '[name]' : '[name]__[hash:base64:4]',
           },
         },
       },
     ],
   },
-  plugins: debug ? [
+  plugins: isDev ? [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new FriendlyErrorsPlugin(),
@@ -103,6 +110,7 @@ module.exports = {
     }),
   ] : [
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
@@ -122,7 +130,6 @@ module.exports = {
         preserveLineBreaks: true,
       },
     }),
-    // new BundleAnalyzerPlugin(),
     new OfflinePlugin({
       version: '[hash]',
       AppCache: false,

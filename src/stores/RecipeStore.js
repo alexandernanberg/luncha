@@ -1,7 +1,6 @@
 import { computed, observable, action, toJS } from 'mobx'
 import shortid from 'shortid'
 import slugify from 'slugify'
-import { database } from '../firebase'
 
 class Ingredient {
   constructor(title, amount, unit) {
@@ -13,14 +12,14 @@ class Ingredient {
 }
 
 class Recipe {
-  constructor({ key, title, slug, rating, time, image, servings }) {
+  constructor(key, title, rating, time, servings, image) {
     this.id = key
     this.title = title
     this.image = image
     this.rating = rating
     this.time = time
     this.servings = servings
-    this.slug = slug
+    this.slug = slugify(this.title).toLowerCase()
     this.ingredients = [
       new Ingredient('Köttfärs', 400, 'gram'),
       new Ingredient('Mjöl', 1, 'dl'),
@@ -34,52 +33,20 @@ class Recipe {
 export class Recipes {
   @observable recipes = observable.map({})
   @observable currentRecipeSlug = null
-  ref = database.ref('recipes')
 
   constructor() {
-    this.ref.on('value', (snapshot) => {
-      const { entities } = snapshot.val()
-      const recipes = Object.keys(entities).reduce((acc, key) => ({
-        ...acc,
-        [key]: new Recipe({ ...entities[key], key }),
-      }), {})
-
-      this.recipes = {
-        ...this.entities,
-        ...recipes,
-      }
-    })
+    this.recipes = {
+      [shortid()]: new Recipe('', 'Hamburgare med pommes', 4, 20, 4, 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?h=350&auto=compress&cs=tinysrgb'),
+      [shortid()]: new Recipe('', 'Baconpasta med champinjoner och spenat', 4, 20, 4, 'https://images.pexels.com/photos/169743/pexels-photo-169743.jpeg?h=350&auto=compress&cs=tinysrgb'),
+      [shortid()]: new Recipe('', 'Ungsbakad lax med sallad', 4, 20, 4, 'https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?h=350&auto=compress&cs=tinysrgb'),
+      [shortid()]: new Recipe('', 'Hamburgare med pommes', 4, 20, 4, 'https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?h=350&auto=compress&cs=tinysrgb'),
+      [shortid()]: new Recipe('', 'Baconpasta med champinjoner och spenat', 4, 20, 4, 'https://images.pexels.com/photos/169743/pexels-photo-169743.jpeg?h=350&auto=compress&cs=tinysrgb'),
+      [shortid()]: new Recipe('', 'Ungsbakad lax med sallad', 4, 20, 4, 'https://images.pexels.com/photos/8758/food-dinner-lemon-rice.jpg?h=350&auto=compress&cs=tinysrgb'),
+    }
   }
 
   @computed get entities() {
     return toJS(this.recipes)
-  }
-
-  @computed get currentEntityKey() {
-    return Object.keys(this.entities)
-      .find(key => this.entities[key].slug === this.currentRecipeSlug)
-  }
-
-  @action setCurrentRecipeSlug(slug) {
-    this.currentRecipeSlug = slug
-  }
-
-  add(data) {
-    const id = this.ref.child('entities').push().key
-    this.update(id, {
-      ...data,
-      slug: slugify(data.title).toLowerCase(),
-    })
-  }
-
-  update(id, data) {
-    this.ref.child('entities').update({
-      [id]: { ...data },
-    })
-  }
-
-  delete(id) {
-    this.ref.child('entities').child(id).remove()
   }
 }
 
