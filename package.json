@@ -1,7 +1,7 @@
 {
   "name": "luncha",
   "version": "1.0.0",
-  "description": "",
+  "description": "Client for luncha.co",
   "license": "MIT",
   "author": "Alexander Nanberg <alex.nanberg@hotmail.com> (alexandernanberg.com)",
   "repository": {
