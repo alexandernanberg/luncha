@@ -5,6 +5,7 @@ import Single from '../../pages/Single'
 import PageNotFound from '../../pages/PageNotFound'
 import Login from '../../pages/Login'
 import Register from '../../pages/Register'
+import Profile from '../../pages/Profile'
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     key: shortid(),
     path: '/register',
     component: Register,
+  },
+  {
+    key: shortid(),
+    path: '/profil',
+    component: Profile,
   },
   {
     key: shortid(),

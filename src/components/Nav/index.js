@@ -16,6 +16,7 @@ const Nav = (props) => {
       ...routes,
       { to: '/favoriter', name: 'Favoriter' },
       { to: '/inkopslista', name: 'Inköpslista' },
+      { to: '/profil', name: 'Min profil' },
     ]
   } else {
     routes.push({ to: '/login', name: 'Logga in' })
