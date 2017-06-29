@@ -1,0 +1,13 @@
+.root {
+  width: 100%;
+}
+
+.label {
+  width: 100%;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.3rem;
+  line-height: 1em;
+  font-weight: 600;
+  color: map-get($colors, gray900);
+}

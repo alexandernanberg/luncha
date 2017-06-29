@@ -15,6 +15,16 @@
   max-width: 320px;
 }
 
+.label {
+  width: 100%;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.3rem;
+  line-height: 1em;
+  font-weight: 600;
+  color: map-get($colors, gray900);
+}
+
 .button {
   width: 100%;
 }
@@ -25,10 +35,4 @@
   font-size: 1.1rem;
   color: map-get($colors, orange);
   text-decoration: none;
-}
-
-.errorMessage {
-  margin-top: 16px;
-  font-size: 1.2rem;
-  color: map-get($colors, red500);
 }

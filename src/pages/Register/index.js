@@ -7,7 +7,7 @@ import style from './style.scss'
 
 @inject('userStore')
 @observer
-class Login extends React.Component {
+class Register extends React.Component {
   constructor() {
     super()
 
@@ -15,7 +15,6 @@ class Login extends React.Component {
   }
 
   state = {
-    error: false,
     email: '',
     password: '',
   }
@@ -23,12 +22,7 @@ class Login extends React.Component {
   handleOnSubmit = (e) => {
     e.preventDefault()
 
-    this.props.userStore.login(this.state)
-      .then((data) => {
-        if (data && !data.success) {
-          this.setState({ error: true })
-        }
-      })
+    this.props.userStore.register(this.state)
   }
 
   handleOnChange({ target }) {
@@ -44,6 +38,13 @@ class Login extends React.Component {
       <div className={style.component}>
         <form className={style.form} onSubmit={this.handleOnSubmit}>
           <TextField
+            type="text"
+            name="name"
+            label="Namn"
+            value={this.state.name}
+            onChange={this.handleOnChange}
+          />
+          <TextField
             type="email"
             name="email"
             label="Epost"
@@ -58,15 +59,12 @@ class Login extends React.Component {
             value={this.state.password}
             onChange={this.handleOnChange}
           />
-          <Button className={style.button}>Logga in</Button>
-          <Link to="/register" className={style.link}>Inget konto? Registrera</Link>
-          { this.state.error &&
-            <p className={style.errorMessage}>Felaktigt användarnamn eller lösenord</p>
-          }
+          <Button className={style.button}>Registrera</Button>
+          <Link to="/login" className={style.link}>Logga in</Link>
         </form>
       </div>
     )
   }
 }
 
-export default Login
+export default Register

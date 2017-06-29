@@ -1,27 +1,47 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom/es'
+import { observer, inject } from 'mobx-react'
+import shortid from 'shortid'
 import style from './style.scss'
 
-const Nav = () => (
-  <nav className={style.component}>
-    <ul className={style.list}>
-      <li className={style.item}>
-        <NavLink exact to="/" className={style.link} activeClassName={style.linkActive}>Start</NavLink>
-      </li>
-      <li className={style.item}>
-        <NavLink to="/recept" className={style.link} activeClassName={style.linkActive}>Recept</NavLink>
-      </li>
-      <li className={style.item}>
-        <NavLink to="/favoriter" className={style.link} activeClassName={style.linkActive}>Favoriter</NavLink>
-      </li>
-      <li className={style.item}>
-        <NavLink to="/inkopslista" className={style.link} activeClassName={style.linkActive}>Inköpslista</NavLink>
-      </li>
-      <li className={style.item}>
-        <NavLink to="/login" className={style.link} activeClassName={style.linkActive}>Logga in</NavLink>
-      </li>
-    </ul>
-  </nav>
-)
+const Nav = (props) => {
+  const { userStore, location } = props
+  let routes = [
+    { exact: true, to: '/', name: 'Start' },
+    { to: '/recept', name: 'Recept' },
+  ]
 
-export default Nav
+  if (userStore.isAuthenticated) {
+    routes = [
+      ...routes,
+      { to: '/favoriter', name: 'Favoriter' },
+      { to: '/inkopslista', name: 'Inköpslista' },
+    ]
+  } else {
+    routes.push({ to: '/login', name: 'Logga in' })
+  }
+
+  const navItems = routes.map(route => (
+    <li key={shortid()} className={style.item}>
+      <NavLink
+        exact={route.exact}
+        location={location}
+        to={route.to}
+        className={style.link}
+        activeClassName={style.linkActive}
+      >
+        {route.name}
+      </NavLink>
+    </li>
+  ))
+
+  return (
+    <nav className={style.component}>
+      <ul className={style.list}>
+        {navItems}
+      </ul>
+    </nav>
+  )
+}
+
+export default withRouter(inject('userStore')(observer(Nav)))

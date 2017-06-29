@@ -1,6 +1,7 @@
 import { computed, observable, action, toJS } from 'mobx'
 import axios from 'axios'
 import shortid from 'shortid'
+import { API } from '../constants'
 
 class Ingredient {
   constructor(title, amount, unit) {
@@ -13,7 +14,7 @@ class Ingredient {
 
 class Recipe {
   constructor(data) {
-    this.id = data._id // eslint-disable-line no-underscore-dangle
+    this.id = data.id
     this.title = data.name
     this.image = data.image
     this.rating = data.rating
@@ -44,10 +45,10 @@ export class Recipes {
   }
 
   @action fetchRecipes() {
-    axios('https://api.luncha.co/v1/recipes')
+    axios(`${API}/recipes`)
       .then(({ data }) => {
         const entities = data.entities.reduce((acc, entity) => {
-          acc[entity._id] = new Recipe(entity) // eslint-disable-line no-underscore-dangle
+          acc[entity.id] = new Recipe(entity)
           return acc
         }, {})
 
@@ -61,6 +62,5 @@ export class Recipes {
 }
 
 const store = new Recipes()
-window.store = store
 
 export default store

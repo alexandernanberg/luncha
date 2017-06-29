@@ -4,6 +4,7 @@ import Archive from '../../pages/Archive'
 import Single from '../../pages/Single'
 import PageNotFound from '../../pages/PageNotFound'
 import Login from '../../pages/Login'
+import Register from '../../pages/Register'
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     key: shortid(),
     path: '/login',
     component: Login,
+  },
+  {
+    key: shortid(),
+    path: '/register',
+    component: Register,
   },
   {
     key: shortid(),
