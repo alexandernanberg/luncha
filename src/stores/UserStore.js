@@ -5,8 +5,26 @@ import { API } from '../constants'
 class User {
   @observable user = {}
 
+  constructor() {
+    this.user.token = localStorage.getItem('token')
+
+    if (this.user.token) {
+      this.setAxiosAuthHeader()
+      this.fetchUser()
+    }
+  }
+
+  setAxiosAuthHeader() {
+    axios.defaults.headers.common.Authorization = `JWT ${this.user.token}`
+  }
+
   @computed get isAuthenticated() {
     return !!this.user.token
+  }
+
+  @action logout() {
+    this.user = {}
+    localStorage.clear('token')
   }
 
   @action fetchUser() {
@@ -17,13 +35,19 @@ class User {
           ...data,
         }
       })
+      .catch((err) => {
+        console.error(err.response.data)
+        this.logout()
+      })
   }
 
   @action login(credentials) {
     return axios.post(`${API}/login`, credentials)
       .then(({ data }) => {
-        this.user = { id: data.id, token: data.token }
-        axios.defaults.headers.common.Authorization = `JWT ${this.user.token}`
+        this.user = { token: data.token }
+        this.setAxiosAuthHeader()
+        this.fetchUser()
+        localStorage.setItem('token', data.token)
       })
       .catch(err => err.response.data)
   }

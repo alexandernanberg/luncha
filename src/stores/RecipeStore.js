@@ -59,6 +59,17 @@ export class Recipes {
       })
       .catch(err => console.error(err))
   }
+
+  @action fetchRecipeBySlug(slug) {
+    return axios(`${API}/recipe/${slug}`)
+      .then(({ data }) => {
+        this.recipes = {
+          ...this.entities,
+          [data.entity.id]: new Recipe(data.entity),
+        }
+      })
+      .catch(err => console.error(err))
+  }
 }
 
 const store = new Recipes()

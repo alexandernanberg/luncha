@@ -10,16 +10,30 @@ import Info from './components/Info'
 @inject('recipeStore')
 @observer
 class Single extends React.Component {
-  componentWillMount() {
-    this.props.recipeStore.currentRecipeSlug = this.props.match.params.slug
+  state = {
+    isLoading: true,
+    hasError: false,
+  }
+
+  componentDidMount() {
+    const { recipeStore, match } = this.props
+
+    recipeStore.currentRecipeSlug = match.params.slug
+    recipeStore.fetchRecipeBySlug(match.params.slug)
+      .then(() => {
+        this.setState({ isLoading: false })
+      })
+      .catch(() => {
+        this.setState({ isLoading: false, hasError: true })
+      })
   }
 
   render() {
     const { recipeStore } = this.props
     const recipe = recipeStore.entities[recipeStore.currentEntityKey]
 
+    if (this.state.isLoading) return <h1>Laddar...</h1>
     if (!recipe) return <PageNotFound />
-    if (!recipe.title) return <h1>Laddar...</h1>
 
     return (
       <main>

@@ -6,10 +6,6 @@ import style from './style.scss'
 @inject('userStore')
 @observer
 class Profile extends React.Component {
-  componentDidMount() {
-    this.props.userStore.fetchUser()
-  }
-
   render() {
     if (!this.props.userStore.isAuthenticated) {
       return <Redirect to="/" />
