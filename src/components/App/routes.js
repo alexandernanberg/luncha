@@ -1,48 +1,49 @@
-import shortid from 'shortid'
+import { v4 } from 'uuid'
 import Home from '../../pages/Home'
 import Archive from '../../pages/Archive'
-import Single from '../../pages/Single'
-import PageNotFound from '../../pages/PageNotFound'
+import Recipe from '../../pages/Recipe'
+import NotFound from '../../pages/NotFound'
 import Login from '../../pages/Login'
 import Register from '../../pages/Register'
 import Profile from '../../pages/Profile'
+import withAuth from '../common/withAuth'
 
 const routes = [
   {
-    key: shortid(),
+    key: v4(),
     path: '/',
     exact: true,
     component: Home,
   },
   {
-    key: shortid(),
+    key: v4(),
     path: '/recept',
     exact: true,
     component: Archive,
   },
   {
-    key: shortid(),
+    key: v4(),
     path: '/recept/:slug',
-    component: Single,
+    component: Recipe,
   },
   {
-    key: shortid(),
+    key: v4(),
     path: '/login',
     component: Login,
   },
   {
-    key: shortid(),
+    key: v4(),
     path: '/register',
     component: Register,
   },
   {
-    key: shortid(),
+    key: v4(),
     path: '/profil',
-    component: Profile,
+    component: withAuth(Profile),
   },
   {
-    key: shortid(),
-    component: PageNotFound,
+    key: v4(),
+    component: NotFound,
   },
 ]
 

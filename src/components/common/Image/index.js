@@ -1,27 +1,18 @@
 import React from 'react'
 import LazyImage from './LazyImage'
 import Icon from '../Icon'
-import style from './style.scss'
+import Loader from '../Loader'
 
 const FallbackComponent = (
   <div>
-    <Icon name="image" className={style.error} />
-  </div>
-)
-
-const LoadingComponent = (
-  <div className={style.loader}>
-    <span />
-    <span />
-    <span />
+    <Icon name="image" />
   </div>
 )
 
 const Image = props => (
   <LazyImage
-    src={props.src}
-    alt={props.alt}
-    preloader={LoadingComponent}
+    {...props}
+    // preloader={Loader}
     fallback={FallbackComponent}
   />
 )

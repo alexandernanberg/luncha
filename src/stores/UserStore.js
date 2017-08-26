@@ -25,6 +25,7 @@ class User {
   @action logout() {
     this.user = {}
     localStorage.clear('token')
+    axios.defaults.headers.common.Authorization = ''
   }
 
   @action fetchUser() {

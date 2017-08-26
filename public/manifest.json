@@ -1,5 +1,5 @@
 {
-  "name": "Luncha",
+  "name": "Luncha – Hitta nya recept och inspirera ditt matlagande",
   "short_name": "Luncha",
   "start_url": ".",
   "display": "standalone",
@@ -8,12 +8,16 @@
   "background_color": "white",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "media/icon.png",
       "sizes": "96x96"
     },
     {
-      "src": "icon-192.png",
+      "src": "media/icon-192.png",
       "sizes": "192x192"
+    },
+    {
+      "src": "media/icon-512.png",
+      "sizes": "512x512"
     }
   ]
 }

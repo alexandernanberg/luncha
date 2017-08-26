@@ -1,11 +1,11 @@
 import { computed, observable, action, toJS } from 'mobx'
 import axios from 'axios'
-import shortid from 'shortid'
+import { v4 } from 'uuid'
 import { API } from '../constants'
 
 class Ingredient {
   constructor(title, amount, unit) {
-    this.id = shortid()
+    this.id = v4()
     this.title = title
     this.amount = amount
     this.unit = unit

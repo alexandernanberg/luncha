@@ -7,9 +7,16 @@
     "react"
   ],
   "plugins": [
+    "react-hot-loader/babel",
     "transform-decorators-legacy",
     "transform-class-properties",
     "transform-object-rest-spread",
-    "react-hot-loader/babel"
-  ]
+    "polished",
+    "styled-components"
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-react-remove-prop-types"]
+    }
+  }
 }

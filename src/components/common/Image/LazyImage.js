@@ -64,11 +64,13 @@ class LazyImage extends React.Component {
   render() {
     switch (this.state.status) {
       case states.LOADED:
-        return <img src={this.props.src} alt={this.props.alt} />
+        return (
+          <img src={this.props.src} alt={this.props.alt} />
+        )
       case states.FAILED:
-        return this.props.fallback ? this.props.fallback : <div>Error</div>
+        return this.props.fallback || <div>Error</div>
       default:
-        return this.props.preloader ? this.props.preloader : <div>Loading</div>
+        return this.props.preloader || <div>Loading</div>
     }
   }
 }

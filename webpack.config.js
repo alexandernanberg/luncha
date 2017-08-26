@@ -1,13 +1,68 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPLugin = require('html-webpack-plugin')
-const OfflinePlugin = require('offline-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
-const autoprefixer = require('autoprefixer')
+const HtmlWebpackPLugin = require('html-webpack-plugin')
 const SvgSpritePlugin = require('svg-sprite-loader/plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OfflinePlugin = require('offline-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const isDev = process.env.NODE_ENV !== 'production'
+
+let plugins = [
+  new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
+  new webpack.NamedModulesPlugin(),
+  new webpack.optimize.ModuleConcatenationPlugin(),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'commons',
+    minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'manifest',
+    minChunks: Infinity,
+  }),
+  new FriendlyErrorsPlugin({
+    compilationSuccessInfo: {
+      messages: ['Ready on http://localhost:8080'],
+    },
+  }),
+  new SvgSpritePlugin(),
+]
+
+if (isDev) {
+  plugins = [
+    ...plugins,
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPLugin({
+      template: './index.html',
+    }),
+  ]
+} else {
+  plugins = [
+    ...plugins,
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false },
+      sourceMap: true,
+    }),
+    new HtmlWebpackPLugin({
+      template: './index.html',
+      filename: '../index.html',
+      minify: {
+        collapseWhitespace: true,
+        preserveLineBreaks: true,
+      },
+    }),
+    new OfflinePlugin({
+      version: '[hash]',
+      AppCache: false,
+      ServiceWorker: {
+        navigateFallbackURL: '/',
+        output: '../sw.js',
+      },
+    }),
+    new BundleAnalyzerPlugin(),
+  ]
+}
 
 module.exports = {
   entry: {
@@ -43,6 +98,7 @@ module.exports = {
     hot: true,
     quiet: true,
   },
+  plugins,
   module: {
     rules: [
       {
@@ -54,90 +110,14 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                minimize: !isDev,
-                importLoaders: 2,
-                modules: true,
-                localIdentName: isDev ? '[folder]__[local]' : '[hash:base64:6]',
-              },
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                plugins: [
-                  autoprefixer(),
-                ],
-              },
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                data: '@import "core";',
-                includePaths: [
-                  path.join(__dirname, 'src/styles'),
-                ],
-              },
-            },
-          ],
-        }),
-      },
-      {
         test: /\.svg$/,
         loader: {
           loader: 'svg-sprite-loader',
           options: {
-            symbolId: isDev ? '[name]' : '[name]__[hash:base64:4]',
+            symbolId: isDev ? '[name]' : '[name]-[hash:base64:4]',
           },
         },
       },
     ],
   },
-  plugins: isDev ? [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new FriendlyErrorsPlugin(),
-    new ExtractTextPlugin({ disable: true }),
-    new SvgSpritePlugin(),
-    new HtmlWebpackPLugin({
-      template: './index.html',
-      inject: false,
-    }),
-  ] : [
-    new webpack.NamedModulesPlugin(),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: module => module.context && module.context.indexOf('node_modules') !== -1,
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity,
-    }),
-    new ExtractTextPlugin('styles.[contenthash].css'),
-    new SvgSpritePlugin(),
-    new HtmlWebpackPLugin({
-      template: './index.html',
-      filename: '../index.html',
-      inject: false,
-      minify: {
-        collapseWhitespace: true,
-        preserveLineBreaks: true,
-      },
-    }),
-    new OfflinePlugin({
-      version: '[hash]',
-      AppCache: false,
-      ServiceWorker: {
-        navigateFallbackURL: '/',
-        output: '../sw.js',
-        events: true,
-      },
-    }),
-  ],
 }
