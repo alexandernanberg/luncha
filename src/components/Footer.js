@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors } from '../utils/style'
+import { colors } from '../constants'
 
 const StyledFooter = styled.footer`
   display: flex;

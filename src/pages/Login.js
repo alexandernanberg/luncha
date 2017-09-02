@@ -1,24 +1,17 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import queryString from 'query-string'
 import Form from '../components/common/Form'
-import A from '../components/common/Link'
+import Link from '../components/common/Link'
 import TextField from '../components/common/TextField'
 import Button from '../components/common/Button'
-
-const StyledLink = A.withComponent(Link)
 
 @inject('userStore')
 @observer
 class Login extends React.Component {
-  constructor() {
-    super()
-
-    this.handleOnChange = this.handleOnChange.bind(this)
-  }
-
   state = {
+    status: '',
     error: false,
     email: '',
     password: '',
@@ -26,16 +19,17 @@ class Login extends React.Component {
 
   handleOnSubmit = (e) => {
     e.preventDefault()
+    this.setState({ loading: true })
 
     this.props.userStore.login(this.state)
       .then((data) => {
         if (data && !data.success) {
-          this.setState({ error: true })
+          this.setState({ loading: false, error: true })
         }
       })
   }
 
-  handleOnChange({ target }) {
+  handleOnChange = ({ target }) => {
     this.setState({ [target.name]: target.value })
   }
 
@@ -53,6 +47,7 @@ class Login extends React.Component {
           name="email"
           label="Epost"
           value={this.state.email}
+          error={this.state.error}
           onChange={this.handleOnChange}
         />
         <TextField
@@ -61,13 +56,12 @@ class Login extends React.Component {
           name="password"
           label="Lösenord"
           value={this.state.password}
+          error={this.state.error}
+          errorMessage={'Felaktigt användarnamn eller lösenord'}
           onChange={this.handleOnChange}
         />
-        <Button>Logga in</Button>
-        <StyledLink to="/register">Inget konto? Registrera</StyledLink>
-        { this.state.error &&
-          <p>Felaktigt användarnamn eller lösenord</p>
-        }
+        <Button loading={this.state.loading}>Logga in</Button>
+        <Link to="/register">Inget konto? Registrera</Link>
       </Form>
     )
   }

@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import Icon from './Icon'
 import Image from './Image'
-import { colors } from '../../utils/style'
+import Title from './Title'
+import { colors, media } from '../../constants'
 
 const StyledCard = styled(Link)`
   display: flex;
@@ -19,9 +20,11 @@ const StyledCard = styled(Link)`
   transition: all 160ms ease-out;
   will-change: transform, box-shadow;
 
-  :hover {
-    transform: translateY(-2px);
+  &:hover,
+  &:focus {
+    outline: none;
     box-shadow: 0 3px 32px ${rgba(colors.gray900, 0.12)};
+    transform: translateY(-2px);
   }
 `
 
@@ -59,23 +62,36 @@ const CardFigure = styled.figure`
 
 const CardBody = styled.div`
   flex-grow: 1;
-  padding: 24px;
+  padding: 12px 8px;
   text-align: center;
+
+  ${media.small`
+    padding: 24px;
+  `}
 `
 
 const CardFooter = styled.footer`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding: 16px 24px 24px;
+  padding: 0 12px 12px;
 
   svg {
     font-size: 1.4em;
   }
 
   span {
+    font-size: 1rem;
     vertical-align: middle;
+
+    ${media.small`
+      font-size: 1.2rem;
+    `}
   }
+
+  ${media.small`
+    padding: 16px 24px 24px;
+  `}
 `
 
 const Card = (props) => {
@@ -87,12 +103,12 @@ const Card = (props) => {
     .map(() => <Icon name="star" key={v4()} />)
 
   return (
-    <StyledCard to={`/recept/${props.slug}`}>
+    <StyledCard to={`/recipes/${props.slug}`}>
       <CardFigure>
         <Image src={props.image} alt={props.title} />
       </CardFigure>
       <CardBody>
-        <h3>{props.title}</h3>
+        <Title.H3>{props.title}</Title.H3>
       </CardBody>
       <CardFooter>
         <h6>

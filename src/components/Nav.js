@@ -1,88 +1,112 @@
 import React from 'react'
-import { NavLink, withRouter } from 'react-router-dom/es'
+import { NavLink as RouterLink, withRouter } from 'react-router-dom/es'
 import { observer, inject } from 'mobx-react'
 import { v4 } from 'uuid'
 import styled from 'styled-components'
-import { rgba } from 'polished'
-import { colors } from '../utils/style'
+import BaseContainer from './common/Container'
+import { colors, media } from '../constants'
 
 const StyledNav = styled.nav`
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+`
 
+const Container = BaseContainer.extend`
+  width: 100%;
 `
 
 const NavList = styled.ul`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-around;
   flex-shrink: 0;
-  min-width: 100%;
 `
 
 const NavItem = styled.li`
   flex-shrink: 0;
-  margin: 0 16px;
+  margin-right: 24px;
 
-  :first-child {
-    margin-left: 0;
-  }
+  ${media.small`
+    margin-right: 32px;
+  `}
 `
 
-const StyledNavLink = styled(NavLink)`
+const NavLink = styled(RouterLink)`
+  position: relative;
   display: block;
   padding: 16px 0;
-  border-bottom: solid 2px transparent;
   font-size: 1.4rem;
+  font-weight: 700;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
-  color: ${colors.orange500};
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 120ms ease-out;
 
-  :hover {
-    border-color: ${rgba(colors.orange500, 0.5)};
+  &:hover,
+  &:focus {
+    color: white;
+    outline: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    margin: 0 auto;
+    max-width: 32px;
+    background-color: rgba(255, 255, 255, 0);
+    transition: all 120ms ease-out;
   }
 
   &.${props => props.activeClassName} {
-    border-color: ${colors.orange500};
+    color: white;
+
+    &::after {
+      background-color: white;
+    }
   }
 `
 
 const Nav = (props) => {
   const { userStore, location } = props
   let routes = [
-    { exact: true, to: '/', name: 'Start', icon: 'home' },
-    { to: '/recept', name: 'Recept', icon: 'food' },
+    { exact: true, to: '/', name: 'Hem' },
+    { to: '/recipes', name: 'Recept' },
+    { to: '/list', name: 'Inköpslista' },
   ]
 
   if (userStore.isAuthenticated) {
     routes = [
       ...routes,
-      { to: '/favoriter', name: 'Favoriter', icon: 'heart' },
-      { to: '/inkopslista', name: 'Inköpslista', icon: 'home' },
-      { to: '/profil', name: 'Min profil', icon: 'user' },
+      { to: '/favorites', name: 'Favoriter' },
+      { to: '/profile', name: 'Min profil' },
     ]
-  } else {
-    routes.push({ to: '/login', name: 'Logga in / Registrera', icon: 'user' })
   }
 
   const navItems = routes.map(route => (
     <NavItem key={v4()}>
-      <StyledNavLink
+      <NavLink
         exact={route.exact}
         location={location}
         activeClassName="active"
         to={route.to}
       >
         {route.name}
-      </StyledNavLink>
+      </NavLink>
     </NavItem>
   ))
 
   return (
     <StyledNav>
-      <NavList>
-        {navItems}
-      </NavList>
+      <Container>
+        <NavList>
+          {navItems}
+        </NavList>
+      </Container>
     </StyledNav>
   )
 }

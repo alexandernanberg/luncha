@@ -1,12 +1,10 @@
 import { injectGlobal } from 'styled-components'
 import reset from 'styled-reset'
-import { fontFamily } from '../../utils/style'
+import { fontFamily, colors } from '../../constants'
 
 // eslint-disable-next-line no-unused-expressions
 injectGlobal`
   ${reset}
-
-  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600');
 
   *,
   *::before,
@@ -21,6 +19,7 @@ injectGlobal`
     font-family: ${fontFamily};
     font-size: 10px;
     -webkit-font-smoothing: antialiased;
+    color: ${colors.gray900};
   }
 
   body {
@@ -36,11 +35,11 @@ injectGlobal`
   }
 
   ::selection {
-    color: map-get($colors, white);
-    background-color: map-get($colors, orange);
+    color: white;
+    background-color: ${colors.orange500};
   }
 
   a {
-    -webkit-tap-highlight-color: rgba(white, 0);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   }
 `

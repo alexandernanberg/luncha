@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom/es'
 
-class ScrollRestoration extends React.Component {
+class ScrollTop extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0)
@@ -9,8 +9,9 @@ class ScrollRestoration extends React.Component {
   }
 
   render() {
-    return this.props.children
+    return null
   }
 }
 
-export default withRouter(ScrollRestoration)
+export default withRouter(ScrollTop)
+

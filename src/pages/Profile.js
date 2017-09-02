@@ -1,17 +1,10 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import styled from 'styled-components'
 import Button from '../components/common/Button'
-
-const View = styled.section`
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  padding-bottom: 32px;
-  text-align: center;
-`
+import Title from '../components/common/Title'
+import Section from '../components/common/Section'
+import Container from '../components/common/Container'
+import Text from '../components/common/Text'
 
 @inject('userStore')
 @observer
@@ -21,14 +14,18 @@ class Profile extends React.Component {
   }
 
   render() {
+    const { user } = this.props.userStore
+
     return (
-      <View>
-        <h1>Min profil</h1>
-        <p>Id: {this.props.userStore.user.id}</p>
-        <p>Epost: {this.props.userStore.user.email}</p>
-        <p>Namn: {this.props.userStore.user.name}</p>
-        <Button onClick={this.handleLogout}>Logga ut</Button>
-      </View>
+      <Section>
+        <Container>
+          <img src={user.gravatar} alt={user.name} />
+          <Title.H1>{user.name}</Title.H1>
+          <Text>Id: {user.id}</Text>
+          <Text>Epost: {user.email}</Text>
+          <Button onClick={this.handleLogout}>Logga ut</Button>
+        </Container>
+      </Section>
     )
   }
 }

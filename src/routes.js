@@ -1,12 +1,12 @@
 import { v4 } from 'uuid'
-import Home from '../../pages/Home'
-import Archive from '../../pages/Archive'
-import Recipe from '../../pages/Recipe'
-import NotFound from '../../pages/NotFound'
-import Login from '../../pages/Login'
-import Register from '../../pages/Register'
-import Profile from '../../pages/Profile'
-import withAuth from '../common/withAuth'
+import Home from './pages/Home'
+import Archive from './pages/Archive'
+import Recipe from './pages/Recipe'
+import NotFound from './pages/NotFound'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Profile from './pages/Profile'
+import withAuth from './components/withAuth'
 
 const routes = [
   {
@@ -17,13 +17,13 @@ const routes = [
   },
   {
     key: v4(),
-    path: '/recept',
+    path: '/recipes',
     exact: true,
     component: Archive,
   },
   {
     key: v4(),
-    path: '/recept/:slug',
+    path: '/recipes/:slug',
     component: Recipe,
   },
   {
@@ -38,7 +38,7 @@ const routes = [
   },
   {
     key: v4(),
-    path: '/profil',
+    path: '/profile',
     component: withAuth(Profile),
   },
   {

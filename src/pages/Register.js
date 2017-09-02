@@ -1,12 +1,10 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { observer, inject } from 'mobx-react'
 import Form from '../components/common/Form'
 import TextField from '../components/common/TextField'
-import A from '../components/common/Link'
+import Link from '../components/common/Link'
 import Button from '../components/common/Button'
-
-const StyledLink = A.withComponent(Link)
 
 @inject('userStore')
 @observer
@@ -18,14 +16,22 @@ class Register extends React.Component {
   }
 
   state = {
+    loading: false,
+    error: false,
     email: '',
     password: '',
   }
 
   handleOnSubmit = (e) => {
     e.preventDefault()
+    this.setState({ loading: true })
 
     this.props.userStore.register(this.state)
+      .then((data) => {
+        if (data && !data.success) {
+          this.setState({ loading: false, error: true })
+        }
+      })
   }
 
   handleOnChange({ target }) {
@@ -45,6 +51,7 @@ class Register extends React.Component {
           name="name"
           label="Namn"
           value={this.state.name}
+          error={this.state.error}
           onChange={this.handleOnChange}
         />
         <TextField
@@ -53,6 +60,7 @@ class Register extends React.Component {
           name="email"
           label="Epost"
           value={this.state.email}
+          error={this.state.error}
           onChange={this.handleOnChange}
         />
         <TextField
@@ -61,10 +69,11 @@ class Register extends React.Component {
           name="password"
           label="Lösenord"
           value={this.state.password}
+          error={this.state.error}
           onChange={this.handleOnChange}
         />
-        <Button>Registrera</Button>
-        <StyledLink to="/login">Logga in</StyledLink>
+        <Button loading={this.state.loading}>Registrera</Button>
+        <Link to="/login">Logga in</Link>
       </Form>
     )
   }

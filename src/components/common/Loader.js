@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { colors } from '../../utils/style'
+import { colors } from '../../constants'
 
 const animation = keyframes`
   0% {
@@ -38,10 +38,16 @@ const StyledLoader = styled.div`
       animation: ${animation} 1.4s infinite ease 320ms;
     }
   }
+
+  ${props => props.white && `
+    & span {
+      background-color: white;
+    }
+  `}
 `
 
-const Loader = () => (
-  <StyledLoader>
+const Loader = props => (
+  <StyledLoader {...props}>
     <span />
     <span />
     <span />
@@ -49,3 +55,4 @@ const Loader = () => (
 )
 
 export default Loader
+export { StyledLoader }

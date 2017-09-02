@@ -3,28 +3,54 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { rgba } from 'polished'
 import Icon from './common/Icon'
+import Container from './common/Container'
 import Nav from './Nav'
-import { colors } from '../utils/style'
+import HeaderProfile from './HeaderProfile'
+import { colors } from '../constants'
 
-const StyledHeader = styled.header`
-  position: static;
+const Header = styled.header`
+  position: sticky;
+  z-index: 9;
   top: 0;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: start;
-  background-color: ${colors.gray100};
-  box-shadow: 0 0 16px ${rgba('black', 0.12)}
+  background: linear-gradient(to bottom right, ${colors.orange500}, ${colors.red400});
+  box-shadow: 0 0 16px ${rgba('black', 0.12)};
+  backface-visibility: hidden;
 `
 
-const Header = () => (
-  <StyledHeader>
-    <div>
-      <Link to="/">
-        <Icon name="logo" />
-      </Link>
-    </div>
-    <Nav />
-  </StyledHeader>
-)
+const Top = Container.extend`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`
 
-export default Header
+const Logo = styled(Link)`
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 12px 0;
+  color: white;
+  font-size: 3.2rem;
+  text-decoration: none;
+
+  & span {
+    margin-top: 4px;
+    margin-left: 12px;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+`
+
+export default () => (
+  <Header>
+    <Top>
+      <Logo to="/">
+        <Icon name="logo" />
+        <span>Luncha</span>
+      </Logo>
+      <HeaderProfile />
+    </Top>
+    <Nav />
+  </Header>
+)

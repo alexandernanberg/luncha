@@ -1,17 +1,20 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import Card from './common/Card'
+import Container from './common/Container'
 import Section from './common/Section'
+import { media } from '../constants'
 
-const Grid = styled.div`
+const Grid = Container.extend`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 24px;
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 24px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 12px;
+
+  ${media.small`
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 24px;
+  `}
 `
 
 @inject('recipeStore')

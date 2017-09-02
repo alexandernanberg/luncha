@@ -1,5 +1,7 @@
+import React from 'react'
 import styled from 'styled-components'
-import { colors, fontFamily } from '../../utils/style'
+import { colors, fontFamily } from '../../constants'
+import Loader, { StyledLoader } from './Loader'
 
 const Button = styled.button`
   display: inline-block;
@@ -17,7 +19,7 @@ const Button = styled.button`
   text-transform: uppercase;
   text-decoration: none;
   color: white;
-  background: linear-gradient(to right, ${colors.red500}, ${colors.red400});
+  background: linear-gradient(to right, ${colors.orange500}, ${colors.red400});
   cursor: pointer;
   transition: all 120ms ease-out;
   will-change: transform, box-shadow;
@@ -26,9 +28,21 @@ const Button = styled.button`
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
+
+  ${StyledLoader} {
+    margin-top: 0;
+  }
 `
 
 const LinkedButton = Button.withComponent('a')
 
-export default Button
+export default ({ loading, children, ...props }) => (
+  <Button {...props}>
+    { loading ?
+      <Loader white /> :
+      children
+    }
+  </Button>
+)
+
 export { LinkedButton }

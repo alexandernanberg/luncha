@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import { colors } from '../../utils/style'
+import { colors } from '../../constants'
 
 const Input = styled.input`
   display: block;
@@ -9,9 +9,10 @@ const Input = styled.input`
   width: 100%;
   border: solid 2px ${colors.gray300};
   border-radius: 3px;
-  margin-bottom: 24px;
   font-size: 1.6rem;
   color: ${colors.gray900};
+  appearance: none;
+  box-shadow: none;
   transition: border-color 120ms ease-out;
 
   :focus {
@@ -26,18 +27,39 @@ const Label = styled.label`
   margin-bottom: 6px;
   font-size: 1.3rem;
   line-height: 1em;
-  font-weight: 600;
+  font-weight: 700;
   color: ${colors.gray900};
 `
 
 const StyledTextField = styled.div`
+  position: relative;
+  margin-bottom: 32px;
   width: 100%;
+
+  ${props => props.error && `
+    & input {
+      border-color: ${colors.red500};
+    }
+  `}
 `
 
-const TextField = ({ label, ...props }) => (
-  <StyledTextField>
+const ErrorMessage = styled.span`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  color: ${colors.red500};
+`
+
+const TextField = ({ label, errorMessage, error = false, ...props }) => (
+  <StyledTextField error={error}>
     <Label htmlFor={props.id}>{label}</Label>
     <Input {...props} />
+    { error && errorMessage &&
+      <ErrorMessage>{errorMessage}</ErrorMessage>
+    }
   </StyledTextField>
 )
 

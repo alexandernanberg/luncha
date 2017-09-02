@@ -16,7 +16,7 @@ const StyledForm = styled.form`
   max-width: 280px;
   font-size: 1.3rem;
 
-  > *:last-child {
+  > a {
     margin-top: 24px;
   }
 `

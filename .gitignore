@@ -1,6 +1,4 @@
-public/*.js
-public/*.html
-public/dist
+public
 node_modules
 yarn.lock
 !Icon

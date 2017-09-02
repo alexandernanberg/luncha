@@ -4,6 +4,11 @@ import { AppContainer } from 'react-hot-loader'
 import OfflinePluginRuntime from 'offline-plugin/runtime'
 import App from './components/App'
 
+import './manifest.json'
+import './assets/icon.png'
+import './assets/icon-192.png'
+import './assets/icon-512.png'
+
 const render = (Component) => {
   ReactDom.render(
     <AppContainer>
@@ -15,12 +20,14 @@ const render = (Component) => {
 
 render(App)
 
+// Reload react hot loader
 if (module.hot) {
   module.hot.accept('./components/App', () => {
     render(App)
   })
 }
 
+// Install Service Worker
 if (process.env.NODE_ENV === 'production') {
   OfflinePluginRuntime.install()
 }
