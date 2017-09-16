@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react'
 import { v4 } from 'uuid'
 import styled from 'styled-components'
 import BaseContainer from './common/Container'
-import { colors, media } from '../constants'
+import { media } from '../constants'
 
 const StyledNav = styled.nav`
   overflow-x: auto;
