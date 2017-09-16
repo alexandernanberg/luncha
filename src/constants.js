@@ -24,7 +24,9 @@ export const colors = {
   orange500: '#f07d43',
 }
 
-export const fontFamily = 'Nunito Sans, sans-serif'
+export const fontFamily = `-apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Helvetica, Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`
 
 const sizes = {
   large: 1170,

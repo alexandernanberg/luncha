@@ -32,7 +32,7 @@ const Email = styled(Text)`
   color: ${colors.gray600}
 `
 
-const ProfileView = ({ user }) => (
+const ProfileView = ({ user, handleLogout }) => (
   <Section>
     <Container>
       <Avatar src={`${user.gravatar}?s=200`} alt={user.name} />
@@ -40,7 +40,7 @@ const ProfileView = ({ user }) => (
         <Title.H1>{user.name}</Title.H1>
         <Email>{user.email}</Email>
       </Details>
-      <Button onClick={this.handleLogout}>Logga ut</Button>
+      <Button onClick={handleLogout}>Logga ut</Button>
     </Container>
   </Section>
 )

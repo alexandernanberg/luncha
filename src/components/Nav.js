@@ -36,7 +36,7 @@ const NavLink = styled(RouterLink)`
   display: block;
   padding: 16px 0;
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;

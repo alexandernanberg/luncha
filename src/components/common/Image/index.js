@@ -12,7 +12,7 @@ const FallbackComponent = (
 const Image = props => (
   <LazyImage
     {...props}
-    // preloader={Loader}
+    loader={Loader}
     fallback={FallbackComponent}
   />
 )

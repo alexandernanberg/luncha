@@ -38,7 +38,7 @@ const Logo = styled(Link)`
     margin-top: 4px;
     margin-left: 12px;
     font-size: 2rem;
-    font-weight: 700;
+    font-weight: 500;
   }
 `
 

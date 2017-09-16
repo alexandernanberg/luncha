@@ -26,7 +26,7 @@ class Recipes extends React.Component {
 
   render() {
     const { recipeStore } = this.props
-    let entities = recipeStore.entities
+    let { entities } = recipeStore
 
     if (!Object.keys(entities).length) {
       entities = [...Array(3).keys()].reduce((acc, curr, index) => {

@@ -14,7 +14,7 @@ class Profile extends React.Component {
 
     return (
       <div>
-        <ProfileView user={user} />
+        <ProfileView user={user} handleLogout={this.handleLogout} />
       </div>
     )
   }

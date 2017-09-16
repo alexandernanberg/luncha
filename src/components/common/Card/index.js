@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { v4 } from 'uuid'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import Icon from './Icon'
-import Image from './Image'
-import Title from './Title'
-import { colors, media } from '../../constants'
+import Icon from '../Icon'
+import Image from '../Image'
+import Title from '../Title'
+import { colors, media } from '../../../constants'
 
 const StyledCard = styled(Link)`
   display: flex;
@@ -28,7 +28,7 @@ const StyledCard = styled(Link)`
   }
 `
 
-const CardFigure = styled.figure`
+const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   border-bottom: solid 1px ${colors.gray100};
@@ -70,7 +70,7 @@ const CardBody = styled.div`
   `}
 `
 
-const CardFooter = styled.footer`
+const Footer = styled.footer`
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -104,20 +104,20 @@ const Card = (props) => {
 
   return (
     <StyledCard to={`/recipes/${props.slug}`}>
-      <CardFigure>
+      <ImageContainer>
         <Image src={props.image} alt={props.title} />
-      </CardFigure>
+      </ImageContainer>
       <CardBody>
         <Title.H3>{props.title}</Title.H3>
       </CardBody>
-      <CardFooter>
+      <Footer>
         <h6>
           <Icon name="time" /> <span>{props.time} min</span>
         </h6>
         <h6>
           {rating}
         </h6>
-      </CardFooter>
+      </Footer>
     </StyledCard>
   )
 }

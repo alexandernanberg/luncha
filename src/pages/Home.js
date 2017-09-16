@@ -4,7 +4,7 @@ import Recipes from '../components/RecipeList'
 import Title from '../components/common/Title'
 import Container from '../components/common/Container'
 
-const Index = () => (
+const Home = () => (
   <div>
     <Hero>
       <Container>
@@ -15,4 +15,4 @@ const Index = () => (
   </div>
 )
 
-export default Index
+export default Home

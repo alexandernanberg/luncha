@@ -20,8 +20,9 @@ class Login extends React.Component {
   handleOnSubmit = (e) => {
     e.preventDefault()
     this.setState({ loading: true })
+    const { email, password } = this.state
 
-    this.props.userStore.login(this.state)
+    this.props.userStore.login({ email, password })
       .then((data) => {
         if (data && !data.success) {
           this.setState({ loading: false, error: true })

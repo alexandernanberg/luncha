@@ -70,7 +70,7 @@ class LazyImage extends React.Component {
       case states.FAILED:
         return this.props.fallback || <div>Error</div>
       default:
-        return this.props.preloader || <div>Loading</div>
+        return <this.props.loader /> || <div>Loading</div>
     }
   }
 }

@@ -1,9 +1,8 @@
 import { injectGlobal } from 'styled-components'
 import reset from 'styled-reset'
-import { fontFamily, colors } from '../../constants'
+import { fontFamily, colors } from '../constants'
 
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
+const injectStyles = () => injectGlobal`
   ${reset}
 
   *,
@@ -14,11 +13,9 @@ injectGlobal`
 
   html {
     box-sizing: border-box;
-    overflow-x: hidden;
-    overflow-y: scroll;
     font-family: ${fontFamily};
     font-size: 10px;
-    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
     color: ${colors.gray900};
   }
 
@@ -43,3 +40,8 @@ injectGlobal`
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   }
 `
+
+export default () => {
+  injectStyles()
+  return null
+}

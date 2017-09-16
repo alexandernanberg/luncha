@@ -2,12 +2,12 @@ import React from 'react'
 import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/es'
 import styled from 'styled-components'
-import Header from '../Header'
-import Footer from '../Footer'
-import routes from '../../routes'
-import ScrollTop from '../ScrollTop'
-import stores from '../../stores'
-import './globalStyles'
+import Header from './Header'
+import Footer from './Footer'
+import routes from '../routes'
+import ScrollTop from './ScrollTop'
+import stores from '../stores'
+import InjectGlobalStyles from './InjectGlobalStyles'
 
 const Container = styled.div`
   display: flex;
@@ -24,6 +24,7 @@ const App = () => (
     <Router>
       <Container>
         <ScrollTop />
+        <InjectGlobalStyles />
         <Header />
         <Main>
           <Switch>

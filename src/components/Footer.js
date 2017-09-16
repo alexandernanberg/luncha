@@ -11,7 +11,7 @@ const StyledFooter = styled.footer`
 
 const P = styled.p`
   font-size: 1.3rem;
-  color: ${colors.gray400};
+  color: ${colors.gray500};
 `
 
 const Footer = () => (
