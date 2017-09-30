@@ -1,9 +1,12 @@
+import preval from 'preval.macro'
 import { injectGlobal } from 'styled-components'
-import reset from 'styled-reset'
 import { fontFamily, colors } from '../constants'
 
-const injectStyles = () => injectGlobal`
-  ${reset}
+const injectGlobalStyles = () => injectGlobal`
+  ${preval`
+    const fs = require('fs')
+    module.exports = fs.readFileSync('node_modules/reset-css/reset.css', 'utf-8')
+  `}
 
   *,
   *::before,
@@ -17,10 +20,6 @@ const injectStyles = () => injectGlobal`
     font-size: 10px;
     font-smoothing: antialiased;
     color: ${colors.gray900};
-  }
-
-  body {
-    min-width: 320px;
     cursor: default;
   }
 
@@ -42,6 +41,6 @@ const injectStyles = () => injectGlobal`
 `
 
 export default () => {
-  injectStyles()
+  injectGlobalStyles()
   return null
 }
