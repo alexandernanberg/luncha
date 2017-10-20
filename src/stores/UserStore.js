@@ -3,7 +3,7 @@ import axios from 'axios'
 import store from 'store'
 import { API } from '../constants'
 
-class User {
+class UserStore {
   @observable user = {}
 
   constructor() {
@@ -24,23 +24,25 @@ class User {
     return !!this.user.token
   }
 
-  @action fetchUser(token) {
+  @action
+  fetchUser(token) {
     axios.post(`${API}/profile`)
-      .then(({ data }) => {
+      .then(action(({ data }) => {
         this.user = {
           token,
           ...data,
         }
 
         store.set('user', this.user)
-      })
+      }))
       .catch((err) => {
         console.error(err.response.data)
         this.logout()
       })
   }
 
-  @action login(credentials) {
+  @action
+  login(credentials) {
     return new Promise((resolve) => {
       axios.post(`${API}/login`, credentials)
         .then(({ data }) => {
@@ -52,13 +54,15 @@ class User {
     })
   }
 
-  @action logout() {
+  @action
+  logout() {
     this.user = {}
     store.remove('user')
     axios.defaults.headers.common.Authorization = null
   }
 
-  @action register(credentials) {
+  @action
+  register(credentials) {
     return new Promise((resolve) => {
       axios.post(`${API}/register`, credentials)
         .then(({ data }) => {
@@ -72,4 +76,4 @@ class User {
   }
 }
 
-export default new User()
+export default new UserStore()

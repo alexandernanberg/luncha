@@ -94,9 +94,26 @@ const Footer = styled.footer`
   `}
 `
 
+const PlaceholderCard = (props) => {
+  const Wrapper = StyledCard.withComponent('div')
+
+  return (
+    <Wrapper>
+      <ImageContainer>
+        <Image src="" />
+      </ImageContainer>
+      <CardBody>
+        <Title.H3>{props.title}</Title.H3>
+      </CardBody>
+      <Footer />
+    </Wrapper>
+  )
+}
+
+
 const Card = (props) => {
   if (props.placeholder) {
-    return null
+    return <PlaceholderCard />
   }
 
   const rating = [...Array(Number(props.rating)).keys()]

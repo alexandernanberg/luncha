@@ -31,7 +31,7 @@ class Recipe {
   }
 }
 
-export class Recipes {
+export class RecipeStore {
   @observable recipes = observable.map({})
   @observable currentRecipeSlug = null
 
@@ -44,9 +44,10 @@ export class Recipes {
       .find(key => this.currentRecipeSlug === this.entities[key].slug)
   }
 
-  @action fetchRecipes() {
+  @action
+  fetchRecipes() {
     axios(`${API}/recipes`)
-      .then(({ data }) => {
+      .then(action(({ data }) => {
         const entities = data.entities.reduce((acc, entity) => {
           acc[entity.id] = new Recipe(entity)
           return acc
@@ -56,22 +57,23 @@ export class Recipes {
           ...entities,
           ...this.entities,
         }
-      })
+      }))
       .catch(err => console.error(err))
   }
 
-  @action fetchRecipeBySlug(slug) {
+  @action
+  fetchRecipeBySlug(slug) {
     return axios(`${API}/recipe/${slug}`)
-      .then(({ data }) => {
+      .then(action(({ data }) => {
         this.recipes = {
           ...this.entities,
           [data.entity.id]: new Recipe(data.entity),
         }
-      })
+      }))
       .catch(err => console.error(err))
   }
 }
 
-const store = new Recipes()
+const store = new RecipeStore()
 
 export default store

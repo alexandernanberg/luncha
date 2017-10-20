@@ -1,6 +1,6 @@
 import React from 'react'
+import { isEmpty } from 'lodash-es'
 import { observer, inject } from 'mobx-react'
-// import styled from 'styled-components'
 import Card from './common/Card'
 import Container from './common/Container'
 import Section from './common/Section'
@@ -17,6 +17,12 @@ const Grid = Container.extend`
   `}
 `
 
+const placeholderEntities = Array.from({ length: 6 })
+  .reduce((acc, curr, index) => ({
+    ...acc,
+    [`recipe-card-${index}`]: { placeholder: true },
+  }), {})
+
 @inject('recipeStore')
 @observer
 class Recipes extends React.Component {
@@ -27,12 +33,8 @@ class Recipes extends React.Component {
   render() {
     const { recipeStore } = this.props
     let { entities } = recipeStore
-
-    if (!Object.keys(entities).length) {
-      entities = [...Array(3).keys()].reduce((acc, curr, index) => {
-        acc[index] = { placeholder: true }
-        return acc
-      }, {})
+    if (isEmpty(entities)) {
+      entities = placeholderEntities
     }
 
     const recipes = Object.keys(entities).map(key => (
