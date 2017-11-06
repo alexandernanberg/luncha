@@ -1,0 +1,49 @@
+import React from 'react'
+import styled from 'styled-components'
+import Icon from '../../components/common/Icon'
+import Section from '../../components/common/Section'
+import Title from '../../components/common/Title'
+import { colors } from '../../utils/style'
+
+const Info = styled(Section)`
+  text-align: center;
+`
+
+const Details = styled.ul`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 8px;
+  font-size: 1.3rem;
+  color: ${colors.gray800};
+
+  & > * {
+    margin: 6px;
+  }
+`
+
+export default ({ recipe }) => (
+  <Info>
+    <Title.H1>{recipe.title}</Title.H1>
+    <Details>
+      <li>
+        <h4>
+          <Icon name="time" />
+          <span><b>{recipe.time}</b> min</span>
+        </h4>
+      </li>
+      <li>
+        <h4>
+          <Icon name="serving" />
+          <span><b>{recipe.servings}</b> pers</span>
+        </h4>
+      </li>
+      <li>
+        <h4>
+          <Icon name="star" />
+          <span><b>{recipe.rating}</b> av 5</span>
+        </h4>
+      </li>
+    </Details>
+  </Info>
+)
