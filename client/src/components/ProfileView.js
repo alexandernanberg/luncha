@@ -8,12 +8,8 @@ import Text from '../components/common/Text'
 import { colors } from '../constants'
 
 const Container = BaseContainer.extend`
-  display: grid;
   grid-gap: 32px 12px;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto;
-  justify-items: center;
-  justify-content: center;
+  text-align: center;
 `
 
 const Avatar = styled.img`
@@ -23,8 +19,8 @@ const Avatar = styled.img`
 `
 
 const Details = styled.div`
-  justify-self: center;
-  align-self: center;
+  margin-top: 12px;
+  margin-bottom: 24px;
 `
 
 const Email = styled(Text)`
@@ -35,9 +31,9 @@ const Email = styled(Text)`
 const ProfileView = ({ user, handleLogout }) => (
   <Section>
     <Container>
-      <Avatar src={`${user.gravatar}?s=200`} alt={user.name} />
+      <Avatar src={`${user.gravatar}?s=88`} alt={user.name} />
       <Details>
-        <Title.H1>{user.name}</Title.H1>
+        <Title.H3>{user.name}</Title.H3>
         <Email>{user.email}</Email>
       </Details>
       <Button onClick={handleLogout}>Logga ut</Button>

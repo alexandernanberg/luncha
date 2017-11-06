@@ -9,7 +9,6 @@ const Link = styled(RouterLink)`
   flex-flow: row nowrap;
   align-items: center;
   font-size: 1.5rem;
-  font-weight: 300;
   line-height: 1.6em;
   text-decoration: none;
   color: ${rgba('white', 0.8)};

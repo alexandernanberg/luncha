@@ -1,10 +1,10 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
-import Hero from '../components/common/Hero'
-import Section from '../components/common/Section'
-import NotFound from './NotFound'
-import Info from '../components/RecipeInfo'
-import Title from '../components/common/Title'
+import Hero from '../../components/common/Hero'
+import Section from '../../components/common/Section'
+import NotFound from '../NotFound'
+import Info from './Info'
+import Text from '../../components/common/Text'
 
 @inject('recipeStore')
 @observer
@@ -36,12 +36,9 @@ class Single extends React.Component {
 
     return (
       <main>
-        <Hero>
-          <Title.H1>{recipe.title}</Title.H1>
-          <Info recipe={recipe} />
-        </Hero>
+        <Hero image={recipe.image} />
+        <Info recipe={recipe} />
         <Section>
-          <img src={recipe.image} alt={recipe.title} />
           <div>
             <h2>Det här behöver du</h2>
             <ul>
@@ -57,19 +54,21 @@ class Single extends React.Component {
             <h2>Så här gör du</h2>
             <ul>
               <li>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
+                <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
                   similique voluptate, optio culpa quo totam?
-                  Excepturi natus sapiente atque.</p>
+                  Excepturi natus sapiente atque.
+                </Text>
               </li>
               <li>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
+                <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
                   similique voluptate, optio culpa quo totam?
-                  Excepturi natus sapiente atque.</p>
+                  Excepturi natus sapiente atque.
+                </Text>
               </li>
               <li>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
+                <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
                   similique voluptate, optio culpa quo totam?
-                  Excepturi natus sapiente atque.</p>
+                  Excepturi natus sapiente atque.</Text>
               </li>
             </ul>
           </div>
