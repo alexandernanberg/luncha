@@ -8,12 +8,6 @@
     "type": "git",
     "url": "https://github.com/alexandernanberg/luncha"
   },
-  "browserslist": [
-    "last 2 Edge versions",
-    "last 2 Safari versions",
-    "last 2 Chrome versions",
-    "last 2 Firefox versions"
-  ],
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "npm run clean && NODE_ENV=production webpack",

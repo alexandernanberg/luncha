@@ -78,12 +78,16 @@ const Footer = styled.footer`
   color: ${colors.gray700};
 
   svg {
-    font-size: 1.4em;
+    font-size: 1em;
     vertical-align: text-bottom;
+
+    ${media.small`
+      font-size: 1.4rem;
+    `}
   }
 
   span {
-    font-size: 1rem;
+    font-size: 0.9rem;
     vertical-align: baseline;
 
     ${media.small`
@@ -112,6 +116,10 @@ const PlaceholderCard = (props) => {
   )
 }
 
+const Stars = styled.div`
+  font-size: 1rem;
+  white-space: nowrap;
+`
 
 const Card = (props) => {
   if (props.placeholder) {
@@ -133,9 +141,7 @@ const Card = (props) => {
         <h6>
           <Icon name="time" /> <span>{props.time} min</span>
         </h6>
-        <h6>
-          {rating}
-        </h6>
+        <Stars>{rating}</Stars>
       </Footer>
     </StyledCard>
   )

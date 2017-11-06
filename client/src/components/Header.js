@@ -6,7 +6,7 @@ import Icon from './common/Icon'
 import Container from './common/Container'
 import Nav from './Nav'
 import HeaderProfile from './HeaderProfile'
-import { colors } from '../constants'
+import { colors, media } from '../constants'
 
 const Header = styled.header`
   position: sticky;
@@ -29,14 +29,17 @@ const Logo = styled(Link)`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  margin: 12px 0;
+  margin: 12px 0 0;
   color: white;
   font-size: 3.2rem;
   text-decoration: none;
 
+  ${media.small`
+    margin-bottom: 12px;
+  `}
+
   & span {
-    margin-top: 4px;
-    margin-left: 12px;
+    margin-left: 8px;
     font-size: 2rem;
     font-weight: 500;
   }
