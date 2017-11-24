@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../constants'
+import { media } from '../../style'
 
 const Hero = styled.section`
   position: relative;

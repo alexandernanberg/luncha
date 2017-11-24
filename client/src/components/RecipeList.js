@@ -4,7 +4,7 @@ import { observer, inject } from 'mobx-react'
 import Card from './common/Card'
 import Container from './common/Container'
 import Section from './common/Section'
-import { media } from '../constants'
+import { media } from '../style'
 
 const Grid = Container.extend`
   display: grid;

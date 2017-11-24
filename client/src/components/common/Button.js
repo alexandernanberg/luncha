@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors, fontFamily } from '../../constants'
+import { colors, fontFamily } from '../../style'
 import Loader, { StyledLoader } from './Loader'
 
 const Button = styled.button`

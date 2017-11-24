@@ -2,17 +2,19 @@
   "presets": [
     ["env", {
       "modules": false,
-      "useBuiltIns": true
+      "useBuiltIns": true,
+      "loose": true
     }],
     "react"
   ],
   "plugins": [
     "preval",
-    "babel-macros",
+    ["transform-decorators-legacy"],
     "react-hot-loader/babel",
-    "transform-decorators-legacy",
     "transform-class-properties",
     "transform-object-rest-spread",
+    "transform-runtime",
+    "syntax-dynamic-import",
     "styled-components",
     "polished"
   ],

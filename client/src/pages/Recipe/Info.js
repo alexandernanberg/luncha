@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Icon from '../../components/common/Icon'
 import Section from '../../components/common/Section'
 import Title from '../../components/common/Title'
-import { colors } from '../../utils/style'
+import { colors } from '../../style'
 
 const Info = styled(Section)`
   text-align: center;
