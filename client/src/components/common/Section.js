@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, media } from '../../constants'
+import { colors, media } from '../../style'
 
 const Section = styled.section`
   padding-top: 32px;

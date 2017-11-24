@@ -1,8 +1,8 @@
 import React from 'react'
-import injectStyle from '../../utils/injectStyle'
+import { injectGlobalStyle } from '../../style'
 
 const withGlobalStyle = Component => (props) => {
-  injectStyle()
+  injectGlobalStyle()
   return <Component {...props} />
 }
 

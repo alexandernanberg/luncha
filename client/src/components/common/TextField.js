@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import { colors } from '../../constants'
+import { colors } from '../../style'
 
 const Input = styled.input`
   display: block;
@@ -53,7 +53,9 @@ const ErrorMessage = styled.span`
   color: ${colors.red500};
 `
 
-const TextField = ({ label, errorMessage, error = false, ...props }) => (
+const TextField = ({
+  label, errorMessage, error = false, ...props
+}) => (
   <StyledTextField error={error}>
     <Label htmlFor={props.id}>{label}</Label>
     <Input {...props} />

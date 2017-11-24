@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors } from '../../constants'
+import { colors } from '../../style'
 
 const Text = styled.h1`
   font-size: 1.6rem;
