@@ -5,6 +5,7 @@ import Form from '../components/common/Form'
 import TextField from '../components/common/TextField'
 import Link from '../components/common/Link'
 import Button from '../components/common/Button'
+import Page from '../components/Page'
 
 @inject('userStore')
 @observer
@@ -44,37 +45,39 @@ class Register extends React.Component {
     }
 
     return (
-      <Form onSubmit={this.handleOnSubmit}>
-        <TextField
-          id="formName"
-          type="text"
-          name="name"
-          label="Namn"
-          value={this.state.name}
-          error={this.state.error}
-          onChange={this.handleOnChange}
-        />
-        <TextField
-          id="formEmail"
-          type="email"
-          name="email"
-          label="Epost"
-          value={this.state.email}
-          error={this.state.error}
-          onChange={this.handleOnChange}
-        />
-        <TextField
-          id="formPassword"
-          type="password"
-          name="password"
-          label="Lösenord"
-          value={this.state.password}
-          error={this.state.error}
-          onChange={this.handleOnChange}
-        />
-        <Button loading={this.state.loading}>Registrera</Button>
-        <Link to="/login">Logga in</Link>
-      </Form>
+      <Page title="Registrera">
+        <Form onSubmit={this.handleOnSubmit}>
+          <TextField
+            id="formName"
+            type="text"
+            name="name"
+            label="Namn"
+            value={this.state.name}
+            error={this.state.error}
+            onChange={this.handleOnChange}
+          />
+          <TextField
+            id="formEmail"
+            type="email"
+            name="email"
+            label="Epost"
+            value={this.state.email}
+            error={this.state.error}
+            onChange={this.handleOnChange}
+          />
+          <TextField
+            id="formPassword"
+            type="password"
+            name="password"
+            label="Lösenord"
+            value={this.state.password}
+            error={this.state.error}
+            onChange={this.handleOnChange}
+          />
+          <Button loading={this.state.loading}>Registrera</Button>
+          <Link to="/login">Logga in</Link>
+        </Form>
+      </Page>
     )
   }
 }
