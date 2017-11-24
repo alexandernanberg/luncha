@@ -1,5 +1,6 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react'
+import Page from '../components/Page'
 import ProfileView from '../components/ProfileView'
 
 @inject('userStore')
@@ -13,9 +14,9 @@ class Profile extends React.Component {
     const { user } = this.props.userStore
 
     return (
-      <div>
+      <Page title="Min profil">
         <ProfileView user={user} handleLogout={this.handleLogout} />
-      </div>
+      </Page>
     )
   }
 }

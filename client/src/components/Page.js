@@ -1,16 +1,11 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import styled from 'styled-components'
 
-const Page = styled.div`
-  flex-grow: 1;
-`
+const Fragment = ({ children }) => children
 
-export default ({ children, title }) => (
-  <Page>
-    <Helmet
-      title={title}
-    />
+export default ({ children, ...props }) => (
+  <Fragment>
+    <Helmet {...props} />
     {children}
-  </Page>
+  </Fragment>
 )
