@@ -6,7 +6,7 @@ import Icon from './common/Icon'
 import Container from './common/Container'
 import Nav from './Nav'
 import HeaderProfile from './HeaderProfile'
-import { colors, media } from '../constants'
+import { colors, media } from '../style'
 
 const Header = styled.header`
   position: sticky;

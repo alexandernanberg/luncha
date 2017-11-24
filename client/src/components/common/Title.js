@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colors, media } from '../../constants'
+import { colors, media } from '../../style'
 
 const Title = styled.h1`
   line-height: 1.4em;

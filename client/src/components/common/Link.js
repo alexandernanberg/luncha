@@ -1,7 +1,7 @@
 import { NavLink as RouterLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import { colors } from '../../constants'
+import { colors } from '../../style'
 
 const Link = styled(RouterLink)`
   appearance: none;

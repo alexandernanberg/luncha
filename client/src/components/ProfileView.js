@@ -5,7 +5,7 @@ import BaseContainer from '../components/common/Container'
 import Button from '../components/common/Button'
 import Title from '../components/common/Title'
 import Text from '../components/common/Text'
-import { colors } from '../constants'
+import { colors } from '../style'
 
 const Container = BaseContainer.extend`
   grid-gap: 32px 12px;

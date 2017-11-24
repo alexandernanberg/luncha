@@ -6,7 +6,7 @@ import { rgba } from 'polished'
 import Icon from '../Icon'
 import Image from '../Image'
 import Title from '../Title'
-import { colors, media } from '../../../utils/style'
+import { colors, media } from '../../../style'
 
 const StyledCard = styled(Link)`
   display: flex;
