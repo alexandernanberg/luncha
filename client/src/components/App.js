@@ -12,7 +12,7 @@ import withGlobalStyle from './hoc/withGlobalStyle'
 
 const Container = styled.div`
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   min-height: 100vh;
 `
 

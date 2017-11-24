@@ -2,7 +2,7 @@ import React from 'react'
 import { observer, inject } from 'mobx-react'
 import Hero from '../../components/common/Hero'
 import Section from '../../components/common/Section'
-import NotFound from '../NotFound'
+import PageNotFound from '../PageNotFound'
 import Info from './Info'
 import Text from '../../components/common/Text'
 
@@ -32,7 +32,7 @@ class Single extends React.Component {
     const recipe = recipeStore.entities[recipeStore.currentEntityKey]
 
     if (this.state.isLoading) return <h1>Laddar...</h1>
-    if (!recipe) return <NotFound />
+    if (!recipe) return <PageNotFound />
 
     return (
       <main>
