@@ -6,19 +6,22 @@ const Title = styled.h1`
   color: ${colors.gray900};
 `
 
-const H1 = Title.extend`
-  font-size: 2.2rem;
+export const H1 = Title.extend`
+  font-size: 2.8rem;
+  font-weight: bold;
+  line-height: 1.16em;
+  margin-bottom: 0.8em;
 
   ${media.small`
     font-size: 3.2rem;
   `}
 
   ${media.medium`
-    font-size: 3.8rem;
+    font-size: 4.4rem;
   `}
 `
 
-const H3 = Title.extend`
+export const H3 = styled(Title.withComponent('h3'))`
   font-size: 1.5rem;
   line-height: 1.2em;
 

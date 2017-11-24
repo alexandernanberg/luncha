@@ -16,10 +16,6 @@ const Container = styled.div`
   min-height: 100vh;
 `
 
-const Main = styled.main`
-  flex-grow: 1;
-`
-
 const App = () => (
   <Provider {...stores}>
     <Router>
@@ -30,13 +26,11 @@ const App = () => (
         />
         <ScrollTop />
         <Header />
-        <Main>
-          <Switch>
-            {routes.map(({ id, ...props }) => (
-              <Route key={id} {...props} />
-            ))}
-          </Switch>
-        </Main>
+        <Switch>
+          {routes.map(({ id, ...props }) => (
+            <Route key={id} {...props} />
+          ))}
+        </Switch>
         <Footer />
       </Container>
     </Router>

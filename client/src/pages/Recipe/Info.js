@@ -2,12 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import Icon from '../../components/common/Icon'
 import Section from '../../components/common/Section'
-import Title from '../../components/common/Title'
+import Container from '../../components/common/Container'
+import { H1 } from '../../components/common/Title'
 import { colors } from '../../style'
 
-const Info = styled(Section)`
-  text-align: center;
-`
 
 const Details = styled.ul`
   display: flex;
@@ -23,27 +21,29 @@ const Details = styled.ul`
 `
 
 export default ({ recipe }) => (
-  <Info>
-    <Title.H1>{recipe.title}</Title.H1>
-    <Details>
-      <li>
-        <h4>
-          <Icon name="time" />
-          <span><b>{recipe.time}</b> min</span>
-        </h4>
-      </li>
-      <li>
-        <h4>
-          <Icon name="serving" />
-          <span><b>{recipe.servings}</b> pers</span>
-        </h4>
-      </li>
-      <li>
-        <h4>
-          <Icon name="star" />
-          <span><b>{recipe.rating}</b> av 5</span>
-        </h4>
-      </li>
-    </Details>
-  </Info>
+  <Section>
+    <Container>
+      <H1>{recipe.title}</H1>
+      <Details>
+        <li>
+          <h4>
+            <Icon name="time" />
+            <span><b>{recipe.time}</b> min</span>
+          </h4>
+        </li>
+        <li>
+          <h4>
+            <Icon name="serving" />
+            <span><b>{recipe.servings}</b> pers</span>
+          </h4>
+        </li>
+        <li>
+          <h4>
+            <Icon name="star" />
+            <span><b>{recipe.rating}</b> av 5</span>
+          </h4>
+        </li>
+      </Details>
+    </Container>
+  </Section>
 )
