@@ -68,7 +68,8 @@ class Single extends React.Component {
               <li>
                 <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
                   similique voluptate, optio culpa quo totam?
-                  Excepturi natus sapiente atque.</Text>
+                  Excepturi natus sapiente atque.
+                </Text>
               </li>
             </ul>
           </div>
