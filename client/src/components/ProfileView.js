@@ -3,12 +3,13 @@ import styled from 'styled-components'
 import Section from './common/Section'
 import BaseContainer from '../components/common/Container'
 import Button from '../components/common/Button'
-import Title from '../components/common/Title'
+import { H1 } from '../components/common/Title'
 import Text from '../components/common/Text'
 import { colors } from '../style'
 
 const Container = BaseContainer.extend`
   grid-gap: 32px 12px;
+  flex-grow: 1;
   text-align: center;
 `
 
@@ -33,7 +34,7 @@ const ProfileView = ({ user, handleLogout }) => (
     <Container>
       <Avatar src={`${user.gravatar}?s=88`} alt={user.name} />
       <Details>
-        <Title.H3>{user.name}</Title.H3>
+        <H1>{user.name}</H1>
         <Email>{user.email}</Email>
       </Details>
       <Button onClick={handleLogout}>Logga ut</Button>

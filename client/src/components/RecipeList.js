@@ -3,7 +3,6 @@ import { isEmpty } from 'lodash-es'
 import { observer, inject } from 'mobx-react'
 import Card from './common/Card'
 import Container from './common/Container'
-import Section from './common/Section'
 import { media } from '../style'
 
 const Grid = Container.extend`
@@ -42,11 +41,9 @@ class Recipes extends React.Component {
     ))
 
     return (
-      <Section>
-        <Grid>
-          {recipes}
-        </Grid>
-      </Section>
+      <Grid>
+        {recipes}
+      </Grid>
     )
   }
 }
