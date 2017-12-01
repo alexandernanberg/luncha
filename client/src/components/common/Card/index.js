@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { rgba } from 'polished'
 import Icon from '../Icon'
 import Image from '../Image'
-import Title from '../Title'
+import { H3 } from '../Title'
 import { colors, media } from '../../../style'
 
 const StyledCard = styled(Link)`
@@ -109,7 +109,7 @@ const PlaceholderCard = (props) => {
         <Image src="" />
       </ImageContainer>
       <CardBody>
-        <Title.H3>{props.title}</Title.H3>
+        <H3>{props.title}</H3>
       </CardBody>
       <Footer />
     </Wrapper>
@@ -135,7 +135,7 @@ const Card = (props) => {
         <Image src={props.image} alt={props.title} />
       </ImageContainer>
       <CardBody>
-        <Title.H3>{props.title}</Title.H3>
+        <H3>{props.title}</H3>
       </CardBody>
       <Footer>
         <h6>
