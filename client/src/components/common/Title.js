@@ -29,8 +29,3 @@ export const H3 = styled(Title.withComponent('h3'))`
     font-size: 2rem;
   `}
 `
-
-export default {
-  H1,
-  H3: H3.withComponent('h3'),
-}
