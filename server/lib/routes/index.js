@@ -13,16 +13,10 @@ router.get('/', (req, res) => {
 });
 
 // Get recipes
-router.get(
-  '/v1/recipes/:page*?',
-  catchErrors(recipeController.getRecipes)
-);
+router.get('/v1/recipes/:page*?', catchErrors(recipeController.getRecipes));
 
 // Get recipes by slug
-router.get(
-  '/v1/recipe/:slug',
-  catchErrors(recipeController.getRecipeBySlug)
-);
+router.get('/v1/recipe/:slug', catchErrors(recipeController.getRecipeBySlug));
 
 // Create recipe
 router.post(
@@ -55,17 +49,9 @@ router.post(
 );
 
 // User login
-router.post(
-  '/v1/login',
-  authController.login,
-  authController.generateToken,
-);
+router.post('/v1/login', authController.login, authController.generateToken);
 
 // User profile
-router.post(
-  '/v1/profile',
-  authController.authenticate,
-  userController.profile,
-);
+router.post('/v1/profile', authController.authenticate, userController.profile);
 
 module.exports = router;
