@@ -1,5 +1,4 @@
 import React from 'react'
-import { observer, inject } from 'mobx-react'
 import { Redirect } from 'react-router-dom'
 import queryString from 'query-string'
 import Form from '../components/common/Form'
@@ -8,8 +7,6 @@ import TextField from '../components/common/TextField'
 import Button from '../components/common/Button'
 import Page from '../components/Page'
 
-@inject('userStore')
-@observer
 class Login extends React.Component {
   state = {
     status: '',
@@ -23,12 +20,11 @@ class Login extends React.Component {
     this.setState({ loading: true })
     const { email, password } = this.state
 
-    this.props.userStore.login({ email, password })
-      .then((data) => {
-        if (data && !data.success) {
-          this.setState({ loading: false, error: true })
-        }
-      })
+    this.props.userStore.login({ email, password }).then((data) => {
+      if (data && !data.success) {
+        this.setState({ loading: false, error: true })
+      }
+    })
   }
 
   handleOnChange = ({ target }) => {

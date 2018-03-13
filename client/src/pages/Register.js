@@ -1,14 +1,11 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { observer, inject } from 'mobx-react'
 import Form from '../components/common/Form'
 import TextField from '../components/common/TextField'
 import Link from '../components/common/Link'
 import Button from '../components/common/Button'
 import Page from '../components/Page'
 
-@inject('userStore')
-@observer
 class Register extends React.Component {
   constructor() {
     super()
@@ -27,12 +24,11 @@ class Register extends React.Component {
     e.preventDefault()
     this.setState({ loading: true })
 
-    this.props.userStore.register(this.state)
-      .then((data) => {
-        if (data && !data.success) {
-          this.setState({ loading: false, error: true })
-        }
-      })
+    this.props.userStore.register(this.state).then((data) => {
+      if (data && !data.success) {
+        this.setState({ loading: false, error: true })
+      }
+    })
   }
 
   handleOnChange({ target }) {

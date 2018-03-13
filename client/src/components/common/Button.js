@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { colors, fontFamily } from '../../style'
+import { colors } from '../../style'
 import Loader, { StyledLoader } from './Loader'
 
 const Button = styled.button`
@@ -11,7 +11,7 @@ const Button = styled.button`
   border: 0;
   border-radius: 2px;
   padding: 15px 24px;
-  font-family: ${fontFamily};
+  font-family: var(--font-family);
   font-size: 1.2rem;
   font-weight: 700;
   line-height: 1em;
@@ -37,12 +37,7 @@ const Button = styled.button`
 const LinkedButton = Button.withComponent('a')
 
 export default ({ loading, children, ...props }) => (
-  <Button {...props}>
-    { loading ?
-      <Loader white /> :
-      children
-    }
-  </Button>
+  <Button {...props}>{loading ? <Loader white /> : children}</Button>
 )
 
 export { LinkedButton }

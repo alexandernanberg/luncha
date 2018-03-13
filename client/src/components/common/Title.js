@@ -8,17 +8,16 @@ const Title = styled.h1`
 
 export const H1 = Title.extend`
   font-size: 2.8rem;
-  font-weight: bold;
-  line-height: 1.16em;
+  font-weight: 700;
+  line-height: 1.2em;
   margin-bottom: 0.8em;
+  letter-spacing: -0.005em;
 
   ${media.small`
     font-size: 3.2rem;
-  `}
-
-  ${media.medium`
-    font-size: 4.4rem;
-  `}
+  `} ${media.medium`
+    font-size: 3.6rem;
+  `};
 `
 
 export const H3 = styled(Title.withComponent('h3'))`
@@ -27,5 +26,5 @@ export const H3 = styled(Title.withComponent('h3'))`
 
   ${media.small`
     font-size: 2rem;
-  `}
+  `};
 `

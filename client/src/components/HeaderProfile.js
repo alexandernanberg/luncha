@@ -1,5 +1,4 @@
 import React from 'react'
-import { inject, observer } from 'mobx-react'
 import { NavLink as RouterLink, withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import { rgba } from 'polished'
@@ -31,11 +30,20 @@ const Avatar = styled.img`
   background-color: rgba(255, 255, 255, 0.5);
 `
 
-export default withRouter(inject('userStore')(observer(({ userStore }) => (
-  !userStore.isAuthenticated ?
-    <Link to="/login" activeClassName="active">Logga in</Link> :
-    <Link to="/profile">
-      <Avatar src={`${userStore.user.gravatar}?s=24`} alt={userStore.user.name} />
-      <span>{userStore.user.name}</span>
+const user = {
+  isAuthenticated: false,
+  name: '',
+  gravatar: '',
+}
+
+export default withRouter(() =>
+  (!user.isAuthenticated ? (
+    <Link to="/login" activeClassName="active">
+        Logga in
     </Link>
-))))
+  ) : (
+    <Link to="/profile">
+      <Avatar src={`${user.gravatar}?s=24`} alt={user.name} />
+      <span>{user.name}</span>
+    </Link>
+  )))

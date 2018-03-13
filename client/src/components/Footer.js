@@ -4,8 +4,9 @@ import { colors } from '../style'
 
 const StyledFooter = styled.footer`
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   align-items: center;
+  margin-top: auto;
   padding: 16px 32px;
 `
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink as RouterLink, withRouter } from 'react-router-dom/es'
-import { observer, inject } from 'mobx-react'
 import { v4 } from 'uuid'
 import styled from 'styled-components'
 import BaseContainer from './common/Container'
@@ -28,19 +27,20 @@ const NavItem = styled.li`
 
   ${media.small`
     margin-right: 32px;
-  `}
+  `};
 `
 
 const NavLink = styled(RouterLink)`
   position: relative;
   display: block;
-  padding: 16px 0;
-  font-size: 1.4rem;
+  padding: 12px 0;
+  font-size: 1.3rem;
   font-weight: 500;
+  letter-spacing: 0.008em;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   transition: all 120ms ease-out;
 
   &:hover,
@@ -79,7 +79,7 @@ const Nav = (props) => {
     { to: '/list', name: 'Inköpslista' },
   ]
 
-  if (userStore.isAuthenticated) {
+  if (userStore) {
     routes = [
       ...routes,
       { to: '/favorites', name: 'Favoriter' },
@@ -89,12 +89,7 @@ const Nav = (props) => {
 
   const navItems = routes.map(route => (
     <NavItem key={v4()}>
-      <NavLink
-        exact={route.exact}
-        location={location}
-        activeClassName="active"
-        to={route.to}
-      >
+      <NavLink exact={route.exact} location={location} activeClassName="active" to={route.to}>
         {route.name}
       </NavLink>
     </NavItem>
@@ -103,12 +98,10 @@ const Nav = (props) => {
   return (
     <StyledNav>
       <Container>
-        <NavList>
-          {navItems}
-        </NavList>
+        <NavList>{navItems}</NavList>
       </Container>
     </StyledNav>
   )
 }
 
-export default withRouter(inject('userStore')(observer(Nav)))
+export default withRouter(Nav)
