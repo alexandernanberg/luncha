@@ -1,4 +1,5 @@
 const express = require('express');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const expressValidator = require('express-validator');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -6,6 +7,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const routes = require('./routes');
+const graphqlSchema = require('./graphql/schema');
 const errorHandlers = require('./helpers/errorHandlers');
 require('./helpers/passport');
 
@@ -37,6 +39,12 @@ app.use(passport.initialize());
 
 // Routes
 app.use('/', routes);
+
+// GraphQL
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema: graphqlSchema }));
+
+// GraphiQL
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 // 404
 app.use(errorHandlers.notFound);

@@ -5,6 +5,7 @@
     "node": true
   },
   "rules": {
+    "max-len": "off",
     "no-console": 0,
     "no-underscore-dangle": 0
   }

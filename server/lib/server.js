@@ -6,7 +6,7 @@ const chalk = require('chalk');
 dotenv.config();
 
 // Connection
-mongoose.connect(process.env.DATABASE, { useMongoClient: true });
+mongoose.connect(process.env.DATABASE);
 mongoose.connection.on('error', (err) => {
   console.error(`${chalk.red('Error')} ${err.message}`);
 });
