@@ -1,7 +1,7 @@
 {
   "name": "luncha-api",
   "version": "1.0.0",
-  "description": "REST API for luncha.co",
+  "description": "API for luncha.co",
   "license": "MIT",
   "author": "Alexander Nanberg <alex.nanberg@hotmail.com> (alexandernanberg.com)",
   "repository": {

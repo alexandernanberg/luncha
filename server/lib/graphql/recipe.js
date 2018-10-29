@@ -6,7 +6,7 @@ const Recipe = `
     name: String
     slug: String
     rating: Int
-    imgage: String
+    image: String
     time: Int
     servings: Int
     author: Author

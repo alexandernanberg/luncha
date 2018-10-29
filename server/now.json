@@ -2,9 +2,9 @@
   "name": "luncha-api",
   "alias": "api.luncha.co",
   "env": {
-    "DATABASE": "mongodb://alex:C94H52mIz0c@ds129532.mlab.com:29532/luncha",
     "PORT": "8080",
-    "SECRET": "g3mDc7lNeG",
-    "KEY": "b3n8JKm2fa"
+    "DATABASE": "@luncha_db",
+    "SECRET": "@luncha_secret",
+    "KEY": "@luncha_key"
   }
 }
