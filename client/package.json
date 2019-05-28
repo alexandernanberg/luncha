@@ -1,13 +1,7 @@
 {
   "name": "luncha",
   "version": "1.0.0",
-  "description": "Client for luncha.co",
-  "license": "MIT",
-  "author": "Alexander Nanberg <alex.nanberg@hotmail.com> (alexandernanberg.com)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alexandernanberg/luncha"
-  },
+  "private": true,
   "scripts": {
     "dev": "react-toolkit dev",
     "build": "react-toolkit build",

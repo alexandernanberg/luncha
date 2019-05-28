@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const chalk = require('chalk')
 
 // Load env
 dotenv.config()
@@ -8,7 +7,7 @@ dotenv.config()
 // DB connection
 mongoose.connect(process.env.DATABASE, { useNewUrlParser: true })
 mongoose.connection.on('error', err => {
-  console.error(`${chalk.red('Error')} ${err.message}`)
+  console.error(`Error: ${err.message}`)
 })
 
 // Models
