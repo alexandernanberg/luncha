@@ -1,26 +1,4 @@
 {
-  "presets": [
-    ["env", {
-      "modules": false,
-      "useBuiltIns": true,
-      "loose": true
-    }],
-    "react"
-  ],
-  "plugins": [
-    "preval",
-    ["transform-decorators-legacy"],
-    "react-hot-loader/babel",
-    "transform-class-properties",
-    "transform-object-rest-spread",
-    "transform-runtime",
-    "syntax-dynamic-import",
-    "styled-components",
-    "polished"
-  ],
-  "env": {
-    "production": {
-      "plugins": ["transform-react-remove-prop-types"]
-    }
-  }
+  "presets": ["react-toolkit/babel"],
+  "plugins": ["preval", "styled-components", "polished"]
 }

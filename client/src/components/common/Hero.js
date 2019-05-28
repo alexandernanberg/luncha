@@ -12,7 +12,9 @@ const Hero = styled.section`
   padding-bottom: 64px;
   text-align: center;
 
-  ${props => props.hasImage && `
+  ${props =>
+    props.hasImage &&
+    `
     height: 40vh;
   `}
 
@@ -37,9 +39,7 @@ const Image = styled.img`
 
 export default ({ image, children, ...rest }) => (
   <Hero hasImage={!!image} {...rest}>
-    {image &&
-      <Image src={image} alt="" />
-    }
+    {image && <Image src={image} alt="" />}
     {children}
   </Hero>
 )

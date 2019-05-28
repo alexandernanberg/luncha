@@ -46,7 +46,7 @@ const ImageContainer = styled.div`
     transform: translate(-50%, -50%);
     font-size: 6.2rem;
     line-height: 0;
-    color: ${colors.gray400}
+    color: ${colors.gray400};
   }
 
   img {
@@ -100,7 +100,7 @@ const Footer = styled.footer`
   `}
 `
 
-const PlaceholderCard = (props) => {
+const PlaceholderCard = props => {
   const Wrapper = StyledCard.withComponent('div')
 
   return (
@@ -121,13 +121,14 @@ const Stars = styled.div`
   white-space: nowrap;
 `
 
-const Card = (props) => {
+const Card = props => {
   if (props.placeholder) {
     return <PlaceholderCard />
   }
 
-  const rating = Array.from({ length: Number(props.rating) })
-    .map(() => <Icon name="star-filled" key={v4()} />)
+  const rating = Array.from({ length: Number(props.rating) }).map(() => (
+    <Icon name="star-filled" key={v4()} />
+  ))
 
   return (
     <StyledCard to={`/recipes/${props.slug}`}>

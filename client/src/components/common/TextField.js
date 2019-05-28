@@ -36,7 +36,9 @@ const StyledTextField = styled.div`
   margin-bottom: 32px;
   width: 100%;
 
-  ${props => props.error && `
+  ${props =>
+    props.error &&
+    `
     & input {
       border-color: ${colors.red500};
     }
@@ -53,15 +55,11 @@ const ErrorMessage = styled.span`
   color: ${colors.red500};
 `
 
-const TextField = ({
-  label, errorMessage, error = false, ...props
-}) => (
+const TextField = ({ label, errorMessage, error = false, ...props }) => (
   <StyledTextField error={error}>
     <Label htmlFor={props.id}>{label}</Label>
     <Input {...props} />
-    { error && errorMessage &&
-      <ErrorMessage>{errorMessage}</ErrorMessage>
-    }
+    {error && errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
   </StyledTextField>
 )
 

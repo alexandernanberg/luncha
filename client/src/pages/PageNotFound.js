@@ -10,7 +10,9 @@ export default () => (
       <Container>
         <H1>
           404 – Ojdå sidan hittades inte&nbsp;
-          <span role="img" aria-label="oops">😳</span>
+          <span role="img" aria-label="oops">
+            😳
+          </span>
         </H1>
       </Container>
     </Hero>

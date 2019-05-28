@@ -18,17 +18,16 @@ class Login extends React.Component {
     password: '',
   }
 
-  handleOnSubmit = (e) => {
+  handleOnSubmit = e => {
     e.preventDefault()
     this.setState({ loading: true })
     const { email, password } = this.state
 
-    this.props.userStore.login({ email, password })
-      .then((data) => {
-        if (data && !data.success) {
-          this.setState({ loading: false, error: true })
-        }
-      })
+    this.props.userStore.login({ email, password }).then(data => {
+      if (data && !data.success) {
+        this.setState({ loading: false, error: true })
+      }
+    })
   }
 
   handleOnChange = ({ target }) => {

@@ -40,36 +40,41 @@ export class RecipeStore {
   }
 
   @computed get currentEntityKey() {
-    return Object.keys(this.entities)
-      .find(key => this.currentRecipeSlug === this.entities[key].slug)
+    return Object.keys(this.entities).find(
+      key => this.currentRecipeSlug === this.entities[key].slug,
+    )
   }
 
   @action
   fetchRecipes() {
     axios(`${API}/recipes`)
-      .then(action(({ data }) => {
-        const entities = data.entities.reduce((acc, entity) => {
-          acc[entity.id] = new Recipe(entity)
-          return acc
-        }, {})
+      .then(
+        action(({ data }) => {
+          const entities = data.entities.reduce((acc, entity) => {
+            acc[entity.id] = new Recipe(entity)
+            return acc
+          }, {})
 
-        this.recipes = {
-          ...entities,
-          ...this.entities,
-        }
-      }))
+          this.recipes = {
+            ...entities,
+            ...this.entities,
+          }
+        }),
+      )
       .catch(err => console.error(err))
   }
 
   @action
   fetchRecipeBySlug(slug) {
     return axios(`${API}/recipe/${slug}`)
-      .then(action(({ data }) => {
-        this.recipes = {
-          ...this.entities,
-          [data.entity.id]: new Recipe(data.entity),
-        }
-      }))
+      .then(
+        action(({ data }) => {
+          this.recipes = {
+            ...this.entities,
+            [data.entity.id]: new Recipe(data.entity),
+          }
+        }),
+      )
       .catch(err => console.error(err))
   }
 }

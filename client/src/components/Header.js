@@ -12,7 +12,11 @@ const Header = styled.header`
   position: sticky;
   z-index: 9;
   top: 0;
-  background: linear-gradient(to bottom right, ${colors.orange500}, ${colors.red400});
+  background: linear-gradient(
+    to bottom right,
+    ${colors.orange500},
+    ${colors.red400}
+  );
   box-shadow: 0 0 16px ${rgba('black', 0.12)};
   backface-visibility: hidden;
 `

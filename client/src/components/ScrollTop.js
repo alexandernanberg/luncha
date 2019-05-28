@@ -14,4 +14,3 @@ class ScrollTop extends React.Component {
 }
 
 export default withRouter(ScrollTop)
-

@@ -39,7 +39,9 @@ const StyledLoader = styled.div`
     }
   }
 
-  ${props => props.white && `
+  ${props =>
+    props.white &&
+    `
     & span {
       background-color: white;
     }

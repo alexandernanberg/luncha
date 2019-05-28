@@ -71,7 +71,7 @@ const NavLink = styled(RouterLink)`
   }
 `
 
-const Nav = (props) => {
+const Nav = props => {
   const { userStore, location } = props
   let routes = [
     { exact: true, to: '/', name: 'Hem' },
@@ -103,9 +103,7 @@ const Nav = (props) => {
   return (
     <StyledNav>
       <Container>
-        <NavList>
-          {navItems}
-        </NavList>
+        <NavList>{navItems}</NavList>
       </Container>
     </StyledNav>
   )

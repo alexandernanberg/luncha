@@ -23,16 +23,15 @@ class Register extends React.Component {
     password: '',
   }
 
-  handleOnSubmit = (e) => {
+  handleOnSubmit = e => {
     e.preventDefault()
     this.setState({ loading: true })
 
-    this.props.userStore.register(this.state)
-      .then((data) => {
-        if (data && !data.success) {
-          this.setState({ loading: false, error: true })
-        }
-      })
+    this.props.userStore.register(this.state).then(data => {
+      if (data && !data.success) {
+        this.setState({ loading: false, error: true })
+      }
+    })
   }
 
   handleOnChange({ target }) {

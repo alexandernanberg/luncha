@@ -31,11 +31,22 @@ const Avatar = styled.img`
   background-color: rgba(255, 255, 255, 0.5);
 `
 
-export default withRouter(inject('userStore')(observer(({ userStore }) => (
-  !userStore.isAuthenticated ?
-    <Link to="/login" activeClassName="active">Logga in</Link> :
-    <Link to="/profile">
-      <Avatar src={`${userStore.user.gravatar}?s=24`} alt={userStore.user.name} />
-      <span>{userStore.user.name}</span>
-    </Link>
-))))
+export default withRouter(
+  inject('userStore')(
+    observer(({ userStore }) =>
+      !userStore.isAuthenticated ? (
+        <Link to="/login" activeClassName="active">
+          Logga in
+        </Link>
+      ) : (
+        <Link to="/profile">
+          <Avatar
+            src={`${userStore.user.gravatar}?s=24`}
+            alt={userStore.user.name}
+          />
+          <span>{userStore.user.name}</span>
+        </Link>
+      ),
+    ),
+  ),
+)

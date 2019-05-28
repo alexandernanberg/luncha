@@ -6,7 +6,6 @@ import Container from '../../components/common/Container'
 import { H1 } from '../../components/common/Title'
 import { colors } from '../../style'
 
-
 const Details = styled.ul`
   display: flex;
   flex-flow: row wrap;
@@ -28,19 +27,25 @@ export default ({ recipe }) => (
         <li>
           <h4>
             <Icon name="time" />
-            <span><b>{recipe.time}</b> min</span>
+            <span>
+              <b>{recipe.time}</b> min
+            </span>
           </h4>
         </li>
         <li>
           <h4>
             <Icon name="serving" />
-            <span><b>{recipe.servings}</b> pers</span>
+            <span>
+              <b>{recipe.servings}</b> pers
+            </span>
           </h4>
         </li>
         <li>
           <h4>
             <Icon name="star" />
-            <span><b>{recipe.rating}</b> av 5</span>
+            <span>
+              <b>{recipe.rating}</b> av 5
+            </span>
           </h4>
         </li>
       </Details>

@@ -37,12 +37,7 @@ const Button = styled.button`
 const LinkedButton = Button.withComponent('a')
 
 export default ({ loading, children, ...props }) => (
-  <Button {...props}>
-    { loading ?
-      <Loader white /> :
-      children
-    }
-  </Button>
+  <Button {...props}>{loading ? <Loader white /> : children}</Button>
 )
 
 export { LinkedButton }

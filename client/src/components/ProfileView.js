@@ -26,7 +26,7 @@ const Details = styled.div`
 
 const Email = styled(Text)`
   font-size: 1.3rem;
-  color: ${colors.gray600}
+  color: ${colors.gray600};
 `
 
 const ProfileView = ({ user, handleLogout }) => (

@@ -26,15 +26,14 @@ export const breakpoints = {
   small: 520,
 }
 
-export const media = Object.keys(breakpoints)
-  .reduce((acc, label) => {
-    acc[label] = (...args) => css`
-      @media (min-width: ${breakpoints[label]}px) {
-        ${css(...args)}
-      }
-    `
-    return acc
-  }, {})
+export const media = Object.keys(breakpoints).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${breakpoints[label]}px) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
 
 export const injectGlobalStyle = () => injectGlobal`
   ${preval`

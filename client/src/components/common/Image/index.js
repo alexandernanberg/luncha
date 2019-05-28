@@ -10,11 +10,7 @@ const FallbackComponent = (
 )
 
 const Image = props => (
-  <LazyImage
-    {...props}
-    loader={Loader}
-    fallback={FallbackComponent}
-  />
+  <LazyImage {...props} loader={Loader} fallback={FallbackComponent} />
 )
 
 export default Image

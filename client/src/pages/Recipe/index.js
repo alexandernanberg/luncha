@@ -18,7 +18,8 @@ class Single extends React.Component {
     const { recipeStore, match } = this.props
 
     recipeStore.currentRecipeSlug = match.params.slug
-    recipeStore.fetchRecipeBySlug(match.params.slug)
+    recipeStore
+      .fetchRecipeBySlug(match.params.slug)
       .then(() => {
         this.setState({ isLoading: false })
       })
@@ -42,32 +43,36 @@ class Single extends React.Component {
           <div>
             <h2>Det här behöver du</h2>
             <ul>
-              {
-                Object.keys(recipe.ingredients).map(key => (
-                  <li key={recipe.ingredients[key].id}>
-                    <b>{recipe.ingredients[key].amount}</b>&nbsp;
-                    <span>{recipe.ingredients[key].unit} {recipe.ingredients[key].title}</span>
-                  </li>
-                ))
-              }
+              {Object.keys(recipe.ingredients).map(key => (
+                <li key={recipe.ingredients[key].id}>
+                  <b>{recipe.ingredients[key].amount}</b>&nbsp;
+                  <span>
+                    {recipe.ingredients[key].unit}{' '}
+                    {recipe.ingredients[key].title}
+                  </span>
+                </li>
+              ))}
             </ul>
             <h2>Så här gör du</h2>
             <ul>
               <li>
-                <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
-                  similique voluptate, optio culpa quo totam?
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Velit numquam, similique voluptate, optio culpa quo totam?
                   Excepturi natus sapiente atque.
                 </Text>
               </li>
               <li>
-                <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
-                  similique voluptate, optio culpa quo totam?
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Velit numquam, similique voluptate, optio culpa quo totam?
                   Excepturi natus sapiente atque.
                 </Text>
               </li>
               <li>
-                <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit numquam,
-                  similique voluptate, optio culpa quo totam?
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Velit numquam, similique voluptate, optio culpa quo totam?
                   Excepturi natus sapiente atque.
                 </Text>
               </li>

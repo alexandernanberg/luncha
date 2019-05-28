@@ -14,7 +14,7 @@ const Link = styled(RouterLink)`
   border-bottom: dotted 1px ${rgba(colors.orange500, 0.5)};
   transition: all 120ms ease-out;
 
-  :hover  {
+  :hover {
     background-color: ${rgba(colors.orange500, 0.08)};
   }
 

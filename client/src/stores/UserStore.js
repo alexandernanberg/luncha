@@ -26,16 +26,19 @@ class UserStore {
 
   @action
   fetchUser(token) {
-    axios.post(`${API}/profile`)
-      .then(action(({ data }) => {
-        this.user = {
-          token,
-          ...data,
-        }
+    axios
+      .post(`${API}/profile`)
+      .then(
+        action(({ data }) => {
+          this.user = {
+            token,
+            ...data,
+          }
 
-        store.set('user', this.user)
-      }))
-      .catch((err) => {
+          store.set('user', this.user)
+        }),
+      )
+      .catch(err => {
         console.error(err.response.data)
         this.logout()
       })
@@ -43,14 +46,17 @@ class UserStore {
 
   @action
   login(credentials) {
-    return new Promise((resolve) => {
-      axios.post(`${API}/login`, credentials)
+    return new Promise(resolve => {
+      axios
+        .post(`${API}/login`, credentials)
         .then(({ data }) => {
           this.setAxiosAuthHeader(data.token)
           this.fetchUser(data.token)
           resolve(data)
         })
-        .catch(() => { resolve({ sucess: false }) })
+        .catch(() => {
+          resolve({ sucess: false })
+        })
     })
   }
 
@@ -63,15 +69,18 @@ class UserStore {
 
   @action
   register(credentials) {
-    return new Promise((resolve) => {
-      axios.post(`${API}/register`, credentials)
+    return new Promise(resolve => {
+      axios
+        .post(`${API}/register`, credentials)
         .then(({ data }) => {
           if (data.success) {
             this.fetchUser(data.token)
           }
           resolve(data)
         })
-        .catch((err) => { resolve(err) })
+        .catch(err => {
+          resolve(err)
+        })
     })
   }
 }

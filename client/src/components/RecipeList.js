@@ -16,11 +16,13 @@ const Grid = Container.extend`
   `}
 `
 
-const placeholderEntities = Array.from({ length: 6 })
-  .reduce((acc, curr, index) => ({
+const placeholderEntities = Array.from({ length: 6 }).reduce(
+  (acc, curr, index) => ({
     ...acc,
     [`recipe-card-${index}`]: { placeholder: true },
-  }), {})
+  }),
+  {},
+)
 
 @inject('recipeStore')
 @observer
@@ -40,11 +42,7 @@ class Recipes extends React.Component {
       <Card key={key} {...entities[key]} />
     ))
 
-    return (
-      <Grid>
-        {recipes}
-      </Grid>
-    )
+    return <Grid>{recipes}</Grid>
   }
 }
 

@@ -64,9 +64,7 @@ class LazyImage extends React.Component {
   render() {
     switch (this.state.status) {
       case states.LOADED:
-        return (
-          <img src={this.props.src} alt={this.props.alt} />
-        )
+        return <img src={this.props.src} alt={this.props.alt} />
       case states.FAILED:
         return this.props.fallback || <div>Error</div>
       default:
