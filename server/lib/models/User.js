@@ -45,6 +45,7 @@ UserSchema.plugin(passportLocalMongoose, {
   usernameField: 'email',
   usernameUnique: true,
 })
+
 UserSchema.plugin(mongodbErrorHandler)
 
 module.exports = mongoose.model('User', UserSchema)

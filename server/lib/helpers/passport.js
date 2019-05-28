@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 const passport = require('passport')
-const passportJWT = require('passport-jwt')
-
-mongoose.Promise = global.Promise
-const { ExtractJwt } = passportJWT
-const JwtStrategy = passportJWT.Strategy
+const { ExtractJwt, Strategy: JwtStrategy } = require('passport-jwt')
 
 const User = mongoose.model('User')
 

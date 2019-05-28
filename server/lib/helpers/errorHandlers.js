@@ -11,8 +11,7 @@ exports.notFound = (req, res, next) => {
 }
 
 // Development error handler
-exports.developmentErrors = (err, req, res, next) => {
-  // eslint-disable-line no-unused-vars
+exports.developmentErrors = (err, req, res) => {
   const { status = 500 } = err
   res.status(status)
   res.json({
@@ -24,8 +23,7 @@ exports.developmentErrors = (err, req, res, next) => {
 }
 
 // Production error handler
-exports.productionErrors = (err, req, res, next) => {
-  // eslint-disable-line no-unused-vars
+exports.productionErrors = (err, req, res) => {
   const { status = 500 } = err
   res.status(status)
   res.json({
