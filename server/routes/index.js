@@ -45,11 +45,10 @@ router.post(
   userController.validateRegister,
   catchErrors(userController.createUser),
   authController.login,
-  authController.generateToken,
 )
 
 // User login
-router.post('/v1/login', authController.login, authController.generateToken)
+router.post('/v1/login', authController.login)
 
 // User profile
 router.post('/v1/profile', authController.authenticate, userController.profile)
