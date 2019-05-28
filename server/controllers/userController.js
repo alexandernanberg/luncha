@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { promisify } = require('util')
 
 const User = mongoose.model('User')
 
@@ -34,8 +33,7 @@ exports.createUser = async (req, res, next) => {
     name: req.body.name,
   })
 
-  const registerPromise = promisify(User.register, User)
-  await registerPromise(user, req.body.password)
+  await User.register(user, req.body.password)
 
   next()
 }

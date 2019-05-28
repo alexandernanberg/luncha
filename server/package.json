@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./lib/server.js",
-    "start": "NODE_ENV=production node ./lib/server.js",
+    "dev": "nodemon server.js",
+    "start": "NODE_ENV=production node server.js",
     "test": "eslint 'lib/**/*.js'"
   },
   "dependencies": {

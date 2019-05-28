@@ -6,6 +6,8 @@ exports.login = (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (err) return next(err)
 
+    console.log(user)
+
     if (!user) {
       return next(new APIError('Unauthorized', 401))
     }

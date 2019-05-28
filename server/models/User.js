@@ -41,10 +41,7 @@ UserSchema.virtual('gravatar').get(function getGravatar() {
   return `https://gravatar.com/avatar/${hash}`
 })
 
-UserSchema.plugin(passportLocalMongoose, {
-  usernameField: 'email',
-  usernameUnique: true,
-})
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' })
 
 UserSchema.plugin(mongodbErrorHandler)
 
