@@ -12,7 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
-    "lodash-es": "^4.17.5",
+    "lodash-es": "^4.17.14",
     "polished": "^3.0.0",
     "preval.macro": "^3.0.0",
     "prop-types": "^15.6.0",
