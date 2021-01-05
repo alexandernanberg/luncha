@@ -10,7 +10,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "classnames": "^2.2.5",
     "lodash-es": "^4.17.5",
     "polished": "^3.0.0",
